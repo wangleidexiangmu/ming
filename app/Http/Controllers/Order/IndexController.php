@@ -39,6 +39,7 @@ class IndexController extends Controller
                 'goods_price'   => $v['goods_price'],
                 'uid'           => Auth::id()
             ];
+            //var_dump($detail);exit;
             //写入订单详情表
             OrderDetailModel::insertGetId($detail);
         }
@@ -67,7 +68,7 @@ class IndexController extends Controller
                     'msg'       => 'ok'
                 ];
             }
-            echo '<pre>';print_r($info->toArray());echo '</pre>';
+          //  echo '<pre>';print_r($info->toArray());echo '</pre>';
         }else{
             die("订单不存在");
         }
