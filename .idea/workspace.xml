@@ -25,8 +25,17 @@
       <file leaf-file-name="WxPayController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Weixin/WxPayController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2950">
+            <state relative-caret-position="-2836">
               <caret line="4" column="27" lean-forward="true" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/web.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="380">
+              <caret line="29" column="44" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -52,11 +61,11 @@
         <option value="$PROJECT_DIR$/resources/views/order/list.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Weixin/WxPayController.php" />
         <option value="$PROJECT_DIR$/.env" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/weixin/pay.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Order/IndexController.php" />
         <option value="&lt;9c710de4-13cb-4e80-965f-20ebfb6ab302&gt;/app/Http/Middleware/VerifyCsrfToken.php" />
         <option value="&lt;9c710de4-13cb-4e80-965f-20ebfb6ab302&gt;/.env" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
       </list>
     </option>
   </component>
@@ -296,12 +305,12 @@
       <option name="presentableId" value="Default" />
       <updated>1555640956987</updated>
       <workItem from="1555640961344" duration="8898000" />
-      <workItem from="1555673894339" duration="7729000" />
+      <workItem from="1555673894339" duration="8523000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16627000" />
+    <option name="totallyTimeSpent" value="17421000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
@@ -405,13 +414,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="28" column="36" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/weixin/pay.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
@@ -448,9 +450,16 @@
     <entry file="file://$PROJECT_DIR$/public/logs/wx_pay_notice.log">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="29" column="44" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Weixin/WxPayController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2950">
+        <state relative-caret-position="-2836">
           <caret line="4" column="27" lean-forward="true" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
         </state>
       </provider>
