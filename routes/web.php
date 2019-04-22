@@ -30,4 +30,4 @@ Route::get('/pay/weixin', 'Weixin\WxPayController@pay');      //微信支付
 Route::post('/weixin/pay/notify', 'Weixin\WxPayController@notify');      //微信支付通知回调
 //支付
 
-Route::get('/pay/success', 'Weixin\PayController@paySuccess');      //微信支付成功
+Route::get('/pay/success', 'Weixin\WxPayController@paySuccess');      //微信支付成功
