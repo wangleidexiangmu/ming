@@ -29,4 +29,5 @@ Route::get('/order/paystatus', 'Order\IndexController@payStatus');      //查询
 Route::get('/pay/weixin', 'Weixin\WxPayController@pay');      //微信支付
 Route::post('/weixin/pay/notify', 'Weixin\WxPayController@notify');      //微信支付通知回调
 //支付
+
 Route::get('/pay/success', 'Weixin\PayController@paySuccess');      //微信支付成功

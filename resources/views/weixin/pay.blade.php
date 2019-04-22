@@ -91,6 +91,20 @@
 <script src="/js/qrcode.min.js"></script>
 <script type="text/javascript">
     new QRCode(document.getElementById("qrcode"), "{{$code_url}}");
+    //ajax轮询，检查订单支付状态
+    setInterval(function(){
+        $.ajax({
+            url : '/order/paystatus?oid=' + "{{$oid}}",
+            type: 'get',
+            dataType:'json',
+            success: function(d){
+                if(d.status==0){
+                    alert("支付成功");
+                    location.href = "/pay/success?oid={{$oid}}";
+                }
+            }
+        });
+    },2000)
 </script>
 
 </body>
