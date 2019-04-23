@@ -41,7 +41,7 @@
         timestamp: "{{$jsconfig['timestamp']}}", // 必填，生成签名的时间戳
         nonceStr: "{{$jsconfig['nonceStr']}}", // 必填，生成签名的随机串
         signature: "{{$jsconfig['signature']}}",// 必填，签名
-        jsApiList: ['chooseImage','uploadImage','updateAppMessageShareData','downloadImage'] // 必填，需要使用的JS接口列表
+        jsApiList: ['chooseImage','uploadImage','onMenuShareTimeline','downloadImage'] // 必填，需要使用的JS接口列表
     });
     wx.ready(function(){
         $("#btn1").click(function(){
@@ -66,6 +66,16 @@
                                 console.log(res1);
                             }
                         });
+                        //下载图片
+                        wx.downloadImage({
+                            localId: v, // 需要上传的图片的本地ID，由chooseImage接口获得
+                            isShowProgressTips: 1, // 默认为1，显示进度提示
+                            success: function (res1) {
+                                var serverId = res1.serverId; // 返回图片的服务器端ID
+                                //alert('serverID: '+ serverId);
+                                console.log(res1);
+                            }
+                        });
                     })
                     $.ajax({
                         url : '/wx/js/getImg?img='+img,     //将上传的照片id发送给后端
@@ -82,25 +92,21 @@
           var link = window.location.href;
           var protocol = window.location.protocol;
           var host = window.location.host;
-          wx.updateAppMessageShareData({
-              title: '分享', // 分享标题
-              desc: '微信测试', // 分享描述
-              link: link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-              imgUrl:protocol+'//'+host+'/resources/images/icon.jpg', // 分享图标
-              success: function (reg) {
-                  // 设置成功
-                  var bus =reg.bus;
-                  var abc='';
-                  $.ajax({
-                      url : '/wx/js/getImg?abc='+abc,     //将上传的照片id发送给后端
-                      type: 'get',
-                      success:function(d){
-                          console.log(d);
-                      }
-                  });
-                 alert('分享成功');
-              }
-          })
+          //分享朋友圈
+          wx.onMenuShareTimeline({
+              title: '这是一个自定义的标题！',
+              link: link,
+              imgUrl: protocol+'//'+host+'/resources/images/icon.jpg',// 自定义图标
+              trigger: function (res) {
+                  // 不要尝试在trigger中使用ajax异步请求修改本次分享的内容，因为客户端分享操作是一个同步操作，这时候使用ajax的回包会还没有返回.
+                  //alert('click shared');
+              },
+              success: function (res) {
+
+                  alert('分享成功');
+                  //some thing you should do
+              },
+
       })
 
 

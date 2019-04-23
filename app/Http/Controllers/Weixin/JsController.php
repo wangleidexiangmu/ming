@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Weixin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
+use function Symfony\Component\Console\Tests\Command\createClosure;
+
 class JsController extends Controller
 {
     public function jstest(){
@@ -29,5 +31,16 @@ class JsController extends Controller
     public function getImg()
     {
         echo '<pre>';print_r($_GET);echo '</pre>';
+    }
+    public function downlodimg($dir,$serverId){
+        $access_token=get_access_token();
+        $Folder=ROOT_PATH.'/logs/'.$dir."/".date('Y-m');
+        if(!file_exists($Folder)){
+            createFolder($Folder);
+        }
+        $filename="bm_".rand(1,100).('YmdHis').'.jpg';
+        $filedir='logs/'.$dir."/".data('Y-m');
+        $strgetName=$Folder."/".$filename;
+        
     }
 }
