@@ -79,12 +79,14 @@
             });
         });
       $("#pub").click(function(){
+          var link = window.location.href;
+          var protocol = window.location.protocol;
+          var host = window.location.host;
           wx.updateAppMessageShareData({
               title: '分享', // 分享标题
               desc: '微信测试', // 分享描述
-              link: '\n' +
-              'http://1809wanglei.comcto.com/wx/test', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-              imgUrl: '', // 分享图标
+              link: link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+              imgUrl:protocol+'//'+host+'/resources/images/icon.jpg', // 分享图标
               success: function (reg) {
                   // 设置成功
                  alert('分享成功');

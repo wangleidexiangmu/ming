@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/model/CartModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/CartModel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/model/GoodsModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/GoodsModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dump.rdb" beforeDir="false" afterPath="$PROJECT_DIR$/dump.rdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/weixin/js.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/weixin/js.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,8 +34,8 @@
       <file leaf-file-name="js.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/weixin/js.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="89" column="17" selection-start-line="89" selection-start-column="17" selection-end-line="89" selection-end-column="17" />
+            <state relative-caret-position="362">
+              <caret line="88" column="69" selection-start-line="88" selection-start-column="69" selection-end-line="88" selection-end-column="69" />
             </state>
           </provider>
         </entry>
@@ -277,12 +276,12 @@
       <workItem from="1555640961344" duration="8898000" />
       <workItem from="1555673894339" duration="10594000" />
       <workItem from="1555846793402" duration="3685000" />
-      <workItem from="1555892406829" duration="37843000" />
+      <workItem from="1555892406829" duration="38501000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61020000" />
+    <option name="totallyTimeSpent" value="61678000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="20" y="6" width="1378" height="728" extended-state="0" />
@@ -518,8 +517,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/weixin/js.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="89" column="17" selection-start-line="89" selection-start-column="17" selection-end-line="89" selection-end-column="17" />
+        <state relative-caret-position="362">
+          <caret line="88" column="69" selection-start-line="88" selection-start-column="69" selection-end-line="88" selection-end-column="69" />
         </state>
       </provider>
     </entry>
