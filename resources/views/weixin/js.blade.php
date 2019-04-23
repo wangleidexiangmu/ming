@@ -89,6 +89,7 @@
               imgUrl:protocol+'//'+host+'/resources/images/icon.jpg', // 分享图标
               success: function (reg) {
                   // 设置成功
+                  console.log(reg);
                  alert('分享成功');
               }
           })
