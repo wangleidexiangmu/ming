@@ -41,6 +41,6 @@ class JsController extends Controller
         $filename="bm_".rand(1,100).('YmdHis').'.jpg';
         $filedir='logs/'.$dir."/".data('Y-m');
         $strgetName=$Folder."/".$filename;
-        
+
     }
 }
