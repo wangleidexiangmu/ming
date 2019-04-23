@@ -31,3 +31,12 @@ Route::post('/weixin/pay/notify', 'Weixin\WxPayController@notify');      //微�
 //支付
 
 Route::get('/pay/success', 'Weixin\WxPayController@paySuccess');      //微信支付成功
+//商品
+Route::get('goods', 'Goods\GoodsController@goods');
+Route::get('detail', 'Goods\GoodsController@goodsdetail');//商品详情
+Route::get('ask', 'Goods\GoodsController@ask');//商品详情
+Route::get('remb', 'Goods\GoodsController@remb');//浏览记录
+//微信JSSDK
+Route::get('/wx/test', 'Weixin\JsController@jstest');      //jssdk测试
+Route::get('/getImg', 'Weixin\JsController@getImg');      //获取JSSDK上传的照片
+Route::get('test', 'Weixin\JsController@test');      //jssdk测试
