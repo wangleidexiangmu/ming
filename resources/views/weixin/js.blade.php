@@ -12,6 +12,7 @@
 
 
 <button id="btn1">选择照片</button>
+<button id="pub">分享</button>
 <table border="1">
     <tr>
         <td>
@@ -40,7 +41,7 @@
         timestamp: "{{$jsconfig['timestamp']}}", // 必填，生成签名的时间戳
         nonceStr: "{{$jsconfig['nonceStr']}}", // 必填，生成签名的随机串
         signature: "{{$jsconfig['signature']}}",// 必填，签名
-        jsApiList: ['chooseImage','uploadImage'] // 必填，需要使用的JS接口列表
+        jsApiList: ['chooseImage','uploadImage','updateAppMessageShareData'] // 必填，需要使用的JS接口列表
     });
     wx.ready(function(){
         $("#btn1").click(function(){
@@ -65,6 +66,13 @@
                                 console.log(res1);
                             }
                         });
+                        wx.downloadImage({
+                            serverId: v, // 需要下载的图片的服务器端ID，由uploadImage接口获得
+                            isShowProgressTips: 1, // 默认为1，显示进度提示
+                            success: function (res) {
+                                var localId = res.localId; // 返回图片下载后的本地ID
+                            }
+                        });
                     })
                     $.ajax({
                         url : '/wx/js/getImg?img='+img,     //将上传的照片id发送给后端
@@ -77,6 +85,21 @@
                 }
             });
         });
+      $("#pub").click(function(){
+          wx.updateAppMessageShareData({
+              title: '分享', // 分享标题
+              desc: '微信测试', // 分享描述
+              link: '\n' +
+              '1809wanglei.comcto.com', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+              imgUrl: '', // 分享图标
+              success: function (reg) {
+                  // 设置成功
+                  console.log(reg);
+              }
+          })
+      })
+
+
     });
 </script>
 </body>
