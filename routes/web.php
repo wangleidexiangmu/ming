@@ -45,3 +45,4 @@ Route::get('weixin/vaild1','Weixin\WeixinController@valid');
 //Route::psot('weixin/vaild1','Weixin\WeixinController@valid');
 //素材
 Route::any('weixin/vaild1','Weixin\WeixinController@wxEvent');
+Route::any('jump','Weixin\WeixinController@goods');

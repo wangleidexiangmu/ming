@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Weixin;
 use   Illuminate\Support\Facades\Redis;
 use Illuminate\Http\Request;
-use  App\model\weixin\weixin;
-use  App\model\weixin\txt;
+use  App\Model\weixin\weixin;
+use App\Model\weixin\txt;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
 use App\Model\GoodsModel;
@@ -81,16 +81,40 @@ class WeixinController extends Controller
                 'text' => $txt,
                 'createtime' => $addtime,
             ];
-            $txtinfo = txt::insert($info);
-            //  var_dump($txtinfo);exit;
+          $arr=txt::insert($info);
+
+             // var_dump($arr);exit;
             if ($txt=='最新商品') {
               $goods=  GoodsModel::where(['is_new'=>1])->get();
-                var_dump($goods);
+               //var_dump($goods);exit;
 
+            foreach ($goods as $v){
+              $res= ' <xml>
+  <ToUserName><![CDATA['.$openid.']]></ToUserName>
+  <FromUserName><![CDATA['.$wx_id.']]></FromUserName>
+  <CreateTime>' . time() . '</CreateTime>
+  <MsgType><![CDATA[news]]></MsgType>
+  <ArticleCount>1</ArticleCount>
+  <Articles>
+    <item>
+      <Title><![CDATA['.$v->name.']]></Title>
+      <Description><![CDATA['.$v->name.']]></Description>
+      <PicUrl><![CDATA[picurl]]></PicUrl>
+      <Url><![CDATA[jump?id=$v->id]]></Url>
+    </item>
+  </Articles>
+</xml>';
+              echo $res;
+            }
 
 
             }
         }
 
+    }
+    public function goods(){
+        $content = file_get_contents("php://input");
+        $data = simplexml_load_string($content);
+        // var_dump($data);exit;
     }
 }
