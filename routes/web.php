@@ -45,4 +45,5 @@ Route::get('weixin/vaild1','Weixin\WeixinController@valid');
 //Route::psot('weixin/vaild1','Weixin\WeixinController@valid');
 //素材
 Route::any('weixin/vaild1','Weixin\WeixinController@wxEvent');
-Route::any('jump','Weixin\WeixinController@goods');
+Route::any('jump','Weixin\WeixinController@goods');//跳转url
+Route::any('del','Order\IndexController@del');//定时任务

@@ -8,6 +8,7 @@ use App\Model\weixin\txt;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
 use App\Model\GoodsModel;
+use Illuminate\Support\Str;
 class WeixinController extends Controller
 {
     public function valid()
@@ -117,12 +118,6 @@ class WeixinController extends Controller
     {
         $id = $request->get('id');
         $res = GoodsModel::where(['id' => $id])->first();
-        return view('weixin.js', ['res' => $res]);
-
-    }
-
-    public function jstest()
-    {
         //计算签名
         $nonceStr = Str::random(10);
         $ticket = getJsapiTicket();
@@ -139,6 +134,10 @@ class WeixinController extends Controller
         $data = [
             'jsconfig' => $js_config
         ];
-        return view('weixin.js', $data);
+        return view('weixin.js', $data,['res'=>$res]);
+
+
     }
+
+
 }

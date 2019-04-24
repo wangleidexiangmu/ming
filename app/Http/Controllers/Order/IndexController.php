@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Order;
 use App\model\CartModel;
+use App\Model\GoodsModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
@@ -73,5 +74,14 @@ class IndexController extends Controller
             die("订单不存在");
         }
         die(json_encode($response));
+    }
+    public function del(){
+        $arr=OrderModel::all()->toArray();
+        foreach ($arr as $v){
+            if(time()-$v['add_time']>1800 && $v['pay_time']==0){
+                OrderModel::where(['oid'=>$v['oid']])->update(['is_del'=>1]);
+        }
+        }
+            echo print_r($arr);
     }
 }
