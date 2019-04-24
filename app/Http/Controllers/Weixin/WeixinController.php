@@ -149,9 +149,14 @@ class WeixinController extends Controller
         echo '<pre>';print_r($response);echo '</pre>';
         $access_token = $response['access_token'];
         $openid = $response['openid'];
+        //获取用户信息
+        $url = 'https://api.weixin.qq.com/sns/userinfo?access_token='.$access_token.'&openid='.$openid.'&lang=zh_CN';
+        $user_info = json_decode(file_get_contents($url),true);
+        echo '<pre>';print_r($user_info);echo '</pre>';
     }
     public function geturl(){
-        $url=urlEncode('http://1809wanglei.comcto.com/geturl');
-       return  $url;
-    }
+        urlEncode('http://1809wanglei.comcto.com/geturl');
+        echo '<pre>';print_r($_GET);echo '</pre>';
+        $code = $_GET['code'];
+}
 }
