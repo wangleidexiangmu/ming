@@ -81,41 +81,64 @@ class WeixinController extends Controller
                 'text' => $txt,
                 'createtime' => $addtime,
             ];
-          $arr=txt::insert($info);
+            $arr = txt::insert($info);
 
-             // var_dump($arr);exit;
-            if ($txt=='最新商品') {
-              $goods=  GoodsModel::where(['is_new'=>1])->get();
-               //var_dump($goods);exit;
-                $url='http://1809wanglei.comcto.com/jump?id=1';
-            foreach ($goods as $v){
-              $res= ' <xml>
-  <ToUserName><![CDATA['.$openid.']]></ToUserName>
-  <FromUserName><![CDATA['.$wx_id.']]></FromUserName>
+            // var_dump($arr);exit;
+            if ($txt == '最新商品') {
+                $goods = GoodsModel::where(['is_new' => 1])->get();
+                //var_dump($goods);exit;
+                $url = 'http://1809wanglei.comcto.com/jump?id=1';
+                foreach ($goods as $v) {
+                    $res = ' <xml>
+  <ToUserName><![CDATA[' . $openid . ']]></ToUserName>
+  <FromUserName><![CDATA[' . $wx_id . ']]></FromUserName>
   <CreateTime>' . time() . '</CreateTime>
   <MsgType><![CDATA[news]]></MsgType>
   <ArticleCount>1</ArticleCount>
   <Articles>
     <item>
-      <Title><![CDATA['.$v->name.']]></Title>
-      <Description><![CDATA['.$v->name.']]></Description>
+      <Title><![CDATA[' . $v->name . ']]></Title>
+      <Description><![CDATA[' . $v->name . ']]></Description>
       <PicUrl><![CDATA[picurl]]></PicUrl>
-      <Url><![CDATA['.$url.']]></Url>
+      <Url><![CDATA[' . $url . ']]></Url>
     </item>
   </Articles>
 </xml>';
-              echo $res;
-            }
+                    echo $res;
+                }
 
 
             }
         }
 
     }
-    public function goods(Request $request){
-       $id=$request->get('id');
-       $res= GoodsModel::where(['id'=>$id])->first();
-   return view('weixin.js',['res'=>$res]);
 
+    public function goods(Request $request)
+    {
+        $id = $request->get('id');
+        $res = GoodsModel::where(['id' => $id])->first();
+        return view('weixin.js', ['res' => $res]);
+
+    }
+
+    public function jstest()
+    {
+        //计算签名
+        $nonceStr = Str::random(10);
+        $ticket = getJsapiTicket();
+        $timestamp = time();
+        $current_url = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+        $string1 = "jsapi_ticket=$ticket&noncestr=$nonceStr&timestamp=$timestamp&url=$current_url";
+        $sign = sha1($string1);
+        $js_config = [
+            'appId' => env('WX_APP_ID'),        //公众号APPID
+            'timestamp' => $timestamp,
+            'nonceStr' => $nonceStr,   //随机字符串
+            'signature' => $sign,                      //签名
+        ];
+        $data = [
+            'jsconfig' => $js_config
+        ];
+        return view('weixin.js', $data);
     }
 }
