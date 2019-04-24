@@ -85,9 +85,10 @@ class WeixinController extends Controller
 
              // var_dump($arr);exit;
             if ($txt=='最新商品') {
-              $goods=  GoodsModel::where(['is_new'=>1])->get();
+              $goods=  GoodsModel::where(['is_new'=>1])->first();
                //var_dump($goods);exit;
-
+                $id=$goods->id;
+            $url='http://www.xiaoming.com/jump?$id';
             foreach ($goods as $v){
               $res= ' <xml>
   <ToUserName><![CDATA['.$openid.']]></ToUserName>
@@ -97,10 +98,10 @@ class WeixinController extends Controller
   <ArticleCount>1</ArticleCount>
   <Articles>
     <item>
-      <Title><![CDATA['.$v->name.']]></Title>
-      <Description><![CDATA['.$v->name.']]></Description>
+      <Title><![CDATA['.$v['name'].']]></Title>
+      <Description><![CDATA['.$v['name'].']]></Description>
       <PicUrl><![CDATA[picurl]]></PicUrl>
-      <Url><![CDATA[jump?id=$v->id]]></Url>
+      <Url><![CDATA['.$url.']]></Url>
     </item>
   </Articles>
 </xml>';
@@ -112,9 +113,11 @@ class WeixinController extends Controller
         }
 
     }
-    public function goods(){
-        $content = file_get_contents("php://input");
-        $data = simplexml_load_string($content);
-        // var_dump($data);exit;
+    public function goods(Request $request){
+       $id=$request->get('id');
+       $res= GoodsModel::where(['id'=>$id])->first();
+     // echo $res;
+        echo $res['name'];
+        echo $res['price'];
     }
 }
