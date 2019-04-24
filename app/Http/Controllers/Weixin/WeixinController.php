@@ -88,7 +88,7 @@ class WeixinController extends Controller
               $goods=  GoodsModel::where(['is_new'=>1])->first();
                //var_dump($goods);exit;
                 $id=$goods->id;
-            $url='http://www.xiaoming.com/jump?$id';
+            $url='http://www.1809wanglei.comcto.com/jump?$id';
             foreach ($goods as $v){
               $res= ' <xml>
   <ToUserName><![CDATA['.$openid.']]></ToUserName>
@@ -98,8 +98,8 @@ class WeixinController extends Controller
   <ArticleCount>1</ArticleCount>
   <Articles>
     <item>
-      <Title><![CDATA['.$v['name'].']]></Title>
-      <Description><![CDATA['.$v['name'].']]></Description>
+      <Title><![CDATA['.$v->name.']]></Title>
+      <Description><![CDATA['.$v->name.']]></Description>
       <PicUrl><![CDATA[picurl]]></PicUrl>
       <Url><![CDATA['.$url.']]></Url>
     </item>
