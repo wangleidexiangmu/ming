@@ -85,10 +85,15 @@ class WeixinController extends Controller
 
              // var_dump($arr);exit;
             if ($txt=='最新商品') {
-              $goods=  GoodsModel::where(['is_new'=>1])->first();
+              $goods=  GoodsModel::where(['is_new'=>1])->get();
                //var_dump($goods);exit;
+<<<<<<< HEAD
                 $id=$goods->id;
             $url='http://www.1809wanglei.comcto.com/jump?$id';
+=======
+
+            $url='http://www.xiaoming.com/jump?id=1';
+>>>>>>> beeff1cc1fdfd3163cd40fd0ac782f07ebbe3fd0
             foreach ($goods as $v){
               $res= ' <xml>
   <ToUserName><![CDATA['.$openid.']]></ToUserName>
