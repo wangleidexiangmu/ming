@@ -140,12 +140,14 @@ class WeixinController extends Controller
     }
 
     public function prower(){
-      $url=$this->geturl();
-//
+       $url=urlEncode('http://1809wanglei.comcto.com/geturl');
         $code='https://open.weixin.qq.com/connect/oauth2/authorize?appid='.env('WX_APP_ID').'&redirect_uri='.$url.'&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect ';
-
+    }
+    public function geturl(){
+        echo '<pre>';print_r($_GET);echo '</pre>';
+        $code = $_GET['code'];
         $token=' https://api.weixin.qq.com/sns/oauth2/access_token?appid='.env('WX_APP_ID').'&secret='.env('WX_APP_SEC').'&code='.$code.'&grant_type=authorization_code';
-       $response = json_decode(file_get_contents($token),true);
+        $response = json_decode(file_get_contents($token),true);
         echo '<pre>';print_r($response);echo '</pre>';
         $access_token = $response['access_token'];
         $openid = $response['openid'];
@@ -153,10 +155,5 @@ class WeixinController extends Controller
         $url = 'https://api.weixin.qq.com/sns/userinfo?access_token='.$access_token.'&openid='.$openid.'&lang=zh_CN';
         $user_info = json_decode(file_get_contents($url),true);
         echo '<pre>';print_r($user_info);echo '</pre>';
-    }
-    public function geturl(){
-        urlEncode('http://1809wanglei.comcto.com/geturl');
-        echo '<pre>';print_r($_GET);echo '</pre>';
-        $code = $_GET['code'];
 }
 }
