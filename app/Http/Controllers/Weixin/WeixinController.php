@@ -115,7 +115,7 @@ class WeixinController extends Controller
     public function goods(Request $request){
        $id=$request->get('id');
        $res= GoodsModel::where(['id'=>$id])->first();
-   return view('weixin.pub',['res'=>$res]);
+   return view('weixin.js',['res'=>$res]);
 
     }
 }
