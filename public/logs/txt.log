@@ -478,6 +478,15 @@
 <MsgId>22277547589843086</MsgId>
 </xml>
 <<<<<<< HEAD
+2019-04-24 14:00:35<xml><ToUserName><![CDATA[gh_20c55a8ab149]]></ToUserName>
+<FromUserName><![CDATA[oYL3b5krtrmqxlwXs0A_7cv4vaJg]]></FromUserName>
+<CreateTime>1556068658</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[最新商品]]></Content>
+<MsgId>22277547589843086</MsgId>
+</xml>
+=======
+<<<<<<< HEAD
 
 2019-04-24 13:50:45<xml><ToUserName><![CDATA[gh_20c55a8ab149]]></ToUserName>
 <FromUserName><![CDATA[oYL3b5tinPY2A-sYbBoynMy9PlEE]]></FromUserName>
@@ -488,6 +497,7 @@
 </xml>
 =======
 >>>>>>> 6651cdad9d0c2431aac0b37828f5bb28ed2fda9c
+<<<<<<< HEAD
 2019-04-24 13:57:42<xml><ToUserName><![CDATA[gh_20c55a8ab149]]></ToUserName>
 <FromUserName><![CDATA[oYL3b5krtrmqxlwXs0A_7cv4vaJg]]></FromUserName>
 <CreateTime>1556085462</CreateTime>
@@ -495,3 +505,6 @@
 <Content><![CDATA[最新商品]]></Content>
 <MsgId>22277787557749209</MsgId>
 </xml>
+=======
+>>>>>>> cae3fdc4fa5d009c25025512fe0a8b8264b47192
+>>>>>>> 91e3142dde495b010e4c7bd7c3b3530c0e4fbefc
