@@ -40,3 +40,8 @@ Route::get('remb', 'Goods\GoodsController@remb');//浏览记录
 Route::get('/wx/test', 'Weixin\JsController@jstest');      //jssdk测试
 Route::get('/getImg', 'Weixin\JsController@getImg');      //获取JSSDK上传的照片
 Route::get('test', 'Weixin\JsController@test');      //jssdk测试
+//微信
+Route::get('weixin/vaild1','Weixin\WeixinController@valid');
+//Route::psot('weixin/vaild1','Weixin\WeixinController@valid');
+//素材
+Route::any('weixin/vaild1','Weixin\WeixinController@wxEvent');
