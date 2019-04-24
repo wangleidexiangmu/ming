@@ -11,7 +11,7 @@
 
 
 
-<button id="btn1">选择照片</button>
+{{--//<button id="btn1">选择照片</button>--}}
 <button id="pub">分享</button>
 <table border="1">
     <tr>

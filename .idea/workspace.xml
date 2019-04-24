@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="90962105-8245-46bb-8800-ff99a57c516b" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/weixin/pub.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Weixin/WeixinController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Weixin/WeixinController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/model/CartModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/CartModel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/model/GoodsModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/GoodsModel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/logs/txt.log" beforeDir="false" afterPath="$PROJECT_DIR$/public/logs/txt.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/logs/wx_event.log" beforeDir="false" afterPath="$PROJECT_DIR$/public/logs/wx_event.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/weixin/js.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/weixin/js.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,7 +27,7 @@
       <file leaf-file-name="WeixinController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Weixin/WeixinController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
+            <state relative-caret-position="-23">
               <caret line="89" column="65" selection-start-line="89" selection-start-column="65" selection-end-line="89" selection-end-column="65" />
               <folding>
                 <element signature="e#46#85#0#PHP" expanded="true" />
@@ -34,11 +36,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WeixinController.php" pinned="true" current-in-tab="false">
-        <entry file="remoteDeploymentFS://&lt;9c710de4-13cb-4e80-965f-20ebfb6ab302&gt;/app/Http/Controllers/Weixin/WeixinController.php">
+      <file leaf-file-name="pub.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/weixin/pub.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="91" column="62" lean-forward="true" selection-start-line="91" selection-start-column="9" selection-end-line="91" selection-end-column="62" />
+            <state relative-caret-position="-232">
+              <caret line="10" column="8" lean-forward="true" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -80,12 +82,13 @@
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="&lt;9c710de4-13cb-4e80-965f-20ebfb6ab302&gt;/.env" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Weixin/JsController.php" />
-        <option value="$PROJECT_DIR$/resources/views/weixin/js.blade.php" />
         <option value="$PROJECT_DIR$/app/Model/weixin.php" />
         <option value="$PROJECT_DIR$/app/Model/txt.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="&lt;9c710de4-13cb-4e80-965f-20ebfb6ab302&gt;/app/Http/Controllers/Weixin/WeixinController.php" />
+        <option value="$PROJECT_DIR$/resources/views/weixin/js.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Weixin/WeixinController.php" />
+        <option value="$PROJECT_DIR$/resources/views/weixin/pub.blade.php" />
       </list>
     </option>
   </component>
@@ -317,12 +320,12 @@
       <workItem from="1555846793402" duration="3685000" />
       <workItem from="1555892406829" duration="45461000" />
       <workItem from="1556069217604" duration="1798000" />
-      <workItem from="1556072220842" duration="6366000" />
+      <workItem from="1556072220842" duration="8054000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76802000" />
+    <option name="totallyTimeSpent" value="78490000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="12" y="17" width="1378" height="728" extended-state="0" />
@@ -334,8 +337,8 @@
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info active="true" anchor="right" id="Remote Host" order="4" visible="true" weight="0.20190896" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49925926" visible="true" weight="0.21071953" />
+      <window_info anchor="right" id="Remote Host" order="4" visible="true" weight="0.20190896" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49925926" visible="true" weight="0.21071953" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" sideWeight="0.50074077" side_tool="true" weight="0.238653" />
@@ -604,13 +607,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/weixin/js.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1482">
-          <caret line="90" column="33" lean-forward="true" selection-start-line="90" selection-start-column="33" selection-end-line="90" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="471">
@@ -618,9 +614,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/weixin/js.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="6" selection-end-line="119" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/weixin/pub.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-232">
+          <caret line="10" column="8" lean-forward="true" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Weixin/WeixinController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
+        <state relative-caret-position="-23">
           <caret line="89" column="65" selection-start-line="89" selection-start-column="65" selection-end-line="89" selection-end-column="65" />
           <folding>
             <element signature="e#46#85#0#PHP" expanded="true" />
