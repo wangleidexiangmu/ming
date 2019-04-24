@@ -83,7 +83,7 @@
             });
         });
       $("#pub").click(function(){
-          var link = window.location.href;
+          var link = window.location.href="http://1809wanglei.comcto.com";
           var protocol = window.location.protocol;
           var host = window.location.host;
           wx.updateAppMessageShareData({
@@ -93,15 +93,7 @@
               imgUrl:protocol+'//'+host+'/resources/images/icon.jpg', // 分享图标
               success: function (reg) {
                   // 设置成功
-                  var bus =reg.bus;
-                  var abc='';
-                  $.ajax({
-                      url : '/wx/js/getImg?abc='+abc,     //将上传的照片id发送给后端
-                      type: 'get',
-                      success:function(d){
-                          console.log(d);
-                      }
-                  });
+
                  alert('分享成功');
               }
           })

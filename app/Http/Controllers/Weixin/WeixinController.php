@@ -139,5 +139,17 @@ class WeixinController extends Controller
 
     }
 
+    public function prower(){
+      $url=$this->geturl();
+//
+        $code='https://open.weixin.qq.com/connect/oauth2/authorize?appid='.env('WX_APP_ID').'&redirect_uri='.$url.'&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect ';
 
+        $access_token=' https://api.weixin.qq.com/sns/oauth2/access_token?appid='.env('WX_APP_ID').'&secret='.env('WX_APP_SEC').'&code='.$code.'&grant_type=authorization_code';
+       // return $access_token;
+        file_get_contents($access_token);
+    }
+    public function geturl(){
+        $url=urlEncode('http://1809wanglei.comcto.com/geturl');
+       return  $url;
+    }
 }
