@@ -144,32 +144,27 @@ class WeixinController extends Controller
        $url=urlEncode('http://1809wanglei.comcto.com/geturl');
       // return $url;
         $code='https://open.weixin.qq.com/connect/oauth2/authorize?appid='.env('WX_APP_ID').'&redirect_uri='.$url.'&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect ';
-<<<<<<< HEAD
 
-=======
-       /// return $code;
->>>>>>> f98e70cfc523ecd5dc06c4ae793ed75848d1de63
     }
     public function geturl(){
-        echo '<pre>';print_r($_GET);echo '</pre>';
+       // echo '<pre>';print_r($_GET);echo '</pre>';
         $code = $_GET['code'];
-<<<<<<< HEAD
+
         $token=' https://api.weixin.qq.com/sns/oauth2/access_token?appid='.env('WX_APP_ID').'&secret='.env('WX_APP_SEC').'&code='.$code.'&grant_type=authorization_code';
         $response = json_decode(file_get_contents($token),true);
-=======
+
         //获取 access_token
         $url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='.env('WX_APP_ID').'&secret='.env('WX_APP_SEC').'&code='.$code.'&grant_type=authorization_code';
         $response = json_decode(file_get_contents($url),true);
->>>>>>> f98e70cfc523ecd5dc06c4ae793ed75848d1de63
-        echo '<pre>';print_r($response);echo '</pre>';
+
+       // echo '<pre>';print_r($response);echo '</pre>';
         $access_token = $response['access_token'];
         $openid = $response['openid'];
         //获取用户信息
         $url = 'https://api.weixin.qq.com/sns/userinfo?access_token='.$access_token.'&openid='.$openid.'&lang=zh_CN';
         $user_info = json_decode(file_get_contents($url),true);
-        echo '<pre>';print_r($user_info);echo '</pre>';
-<<<<<<< HEAD
-=======
+      //  echo '<pre>';print_r($user_info);echo '</pre>';
+
         $openid=$user_info['openid'];
         $wx_id='oYL3b5krtrmqxlwXs0A_7cv4vaJg';
        $res= info::where(['openid'=>$user_info['openid']])->first();
@@ -207,6 +202,6 @@ class WeixinController extends Controller
             echo '欢迎关注';
         }
 
->>>>>>> f98e70cfc523ecd5dc06c4ae793ed75848d1de63
+
 }
 }
