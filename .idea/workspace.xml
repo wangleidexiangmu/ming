@@ -24,11 +24,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="WeixinController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="WeixinController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Weixin/WeixinController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1425">
-              <caret line="204" selection-start-line="204" selection-end-line="204" />
+            <state relative-caret-position="-266">
+              <caret line="174" lean-forward="true" selection-start-line="174" selection-end-line="174" />
               <folding>
                 <element signature="e#46#85#0#PHP" expanded="true" />
               </folding>
@@ -36,10 +36,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WeixinController.php" pinned="true" current-in-tab="true">
+      <file leaf-file-name="WeixinController.php" pinned="true" current-in-tab="false">
         <entry file="remoteDeploymentFS://&lt;9c710de4-13cb-4e80-965f-20ebfb6ab302&gt;/app/Http/Controllers/Weixin/WeixinController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3176" />
+            <state relative-caret-position="-3062" />
           </provider>
         </entry>
       </file>
@@ -333,15 +333,15 @@
       <workItem from="1555846793402" duration="3685000" />
       <workItem from="1555892406829" duration="45461000" />
       <workItem from="1556069217604" duration="1798000" />
-      <workItem from="1556072220842" duration="27244000" />
+      <workItem from="1556072220842" duration="27610000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="97680000" />
+    <option name="totallyTimeSpent" value="98046000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="784" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -350,7 +350,7 @@
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info active="true" anchor="right" id="Remote Host" order="4" visible="true" weight="0.20204978" />
+      <window_info anchor="right" id="Remote Host" order="4" visible="true" weight="0.20204978" />
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49925926" visible="true" weight="0.21010248" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
@@ -643,8 +643,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Weixin/WeixinController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1425">
-          <caret line="204" selection-start-line="204" selection-end-line="204" />
+        <state relative-caret-position="-266">
+          <caret line="174" lean-forward="true" selection-start-line="174" selection-end-line="174" />
           <folding>
             <element signature="e#46#85#0#PHP" expanded="true" />
           </folding>
