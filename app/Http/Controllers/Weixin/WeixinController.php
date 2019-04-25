@@ -147,7 +147,7 @@ class WeixinController extends Controller
        /// return $code;
     }
     public function geturl(){
-        echo '<pre>';print_r($_GET);echo '</pre>';
+     //   echo '<pre>';print_r($_GET);echo '</pre>';
         $code = $_GET['code'];
         //获取 access_token
         $url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='.env('WX_APP_ID').'&secret='.env('WX_APP_SEC').'&code='.$code.'&grant_type=authorization_code';
@@ -158,7 +158,7 @@ class WeixinController extends Controller
         //获取用户信息
         $url = 'https://api.weixin.qq.com/sns/userinfo?access_token='.$access_token.'&openid='.$openid.'&lang=zh_CN';
         $user_info = json_decode(file_get_contents($url),true);
-        echo '<pre>';print_r($user_info);echo '</pre>';
+       // echo '<pre>';print_r($user_info);echo '</pre>';
         $openid=$user_info['openid'];
         $wx_id='oYL3b5krtrmqxlwXs0A_7cv4vaJg';
        $res= info::where(['openid'=>$user_info['openid']])->first();
