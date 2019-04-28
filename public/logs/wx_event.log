@@ -1123,3 +1123,25 @@
 =======
 >>>>>>> ce0a28b3ab9d86002731082e5d8a3fa525924184
 >>>>>>> c21f50583d54c28dedf6af3d7e8acab44a877eed
+2019-04-28 20:30:28<xml><ToUserName><![CDATA[gh_20c55a8ab149]]></ToUserName>
+<FromUserName><![CDATA[oYL3b5krtrmqxlwXs0A_7cv4vaJg]]></FromUserName>
+<CreateTime>1556450800</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[SCAN]]></Event>
+<EventKey><![CDATA[123]]></EventKey>
+<Ticket><![CDATA[gQHG8DwAAAAAAAAAAS5odHRwOi8vd2VpeGluLnFxLmNvbS9xLzAyeW10aUFZd1pmckMxMDAwMGcwM3cAAgSCRcVcAwQAAAAA]]></Ticket>
+</xml>
+
+
+
+2019-04-28 21:05:03<xml><ToUserName><![CDATA[gh_20c55a8ab149]]></ToUserName>
+<FromUserName><![CDATA[oYL3b5krtrmqxlwXs0A_7cv4vaJg]]></FromUserName>
+<CreateTime>1556450800</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[SCAN]]></Event>
+<EventKey><![CDATA[123]]></EventKey>
+<Ticket><![CDATA[gQHG8DwAAAAAAAAAAS5odHRwOi8vd2VpeGluLnFxLmNvbS9xLzAyeW10aUFZd1pmckMxMDAwMGcwM3cAAgSCRcVcAwQAAAAA]]></Ticket>
+</xml>
+
+
+
