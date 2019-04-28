@@ -48,8 +48,9 @@ class WeixinController extends Controller
         $eventkey=$data->EventKey;//二维码
         $picurl='http://image.baidu.com/search/detail?ct=503316480&z=0&ipn=d&word=%E5%9B%BE%E7%89%87jpg&hs=2&pn=0&spn=0&di=78031135380&pi=0&rn=1&tn=baiduimagedetail&is=0%2C0&ie=utf-8&oe=utf-8&cl=2&lm=-1&cs=2322346566%2C2175418725&os=1836096180%2C2499822995&simid=0%2C0&adpicid=0&lpn=0&ln=30&fr=ala&fm=&sme=&cg=&bdtype=0&oriquery=%E5%9B%BE%E7%89%87jpg&objurl=http%3A%2F%2Fimg.jieju.cn%2Fuserfiles%2Fupload%2Fimage%2F20180820%2F6367035969868343062045193.jpg&fromurl=ippr_z2C%24qAzdH3FAzdH3Fooo_z%26e3B3tj37_z%26e3BvgAzdH3FNjofAzdH3Fda8babdaAzdH3FDjpwtsbacl9c_z%26e3Bfip4s&gsm=0&islist=&querylist=';
         $url='http://1809wanglei.comcto.com/';
-        if ($event == 'subscribe') {        //扫码关注事件
-            if($eventkey==''){
+
+        if ($event == 'subscribe'&&$eventkey=='') {        //扫码关注事件
+
                 //根据openid判断用户是否已存在
                 $local_user = weixin::where(['openid' => $openid])->first();
                 if ($local_user) {
@@ -64,7 +65,7 @@ class WeixinController extends Controller
                     </xml>';
 
 
-                } else {          //用户首次关注
+                } else if($event == 'unsubscribe'&&$eventkey==''){          //用户首次关注
                     //获取用户信息
                     $u = $this->getUserInfo($openid);
                     //用户信息入库
@@ -83,29 +84,31 @@ class WeixinController extends Controller
                     <MsgType><![CDATA[text]]></MsgType>
                     <Content><![CDATA[' . '欢迎关注 ' . $u['nickname'] . ']]></Content>
                     </xml>';
-                }
-            }else{
-                $local_user = tmp_wx_users::where(['openid' => $openid])->first();
-                if ($local_user) {
+
+            }else if($event=='SCAN'){
+                $t="商品";
+                $m="商品详情";
+
                     //用户之前关注过
-                    echo '<xml>
-  <ToUserName><![CDATA[' . $openid . ']]></ToUserName>
-  <FromUserName><![CDATA[' . $wx_id . ']]></FromUserName>
-  <CreateTime>12345678</CreateTime>
-  <MsgType><![CDATA[news]]></MsgType>
-  <ArticleCount>1</ArticleCount>
-  <Articles>
-    <item>
-      <Title><![CDATA[title1]]></Title>
-      <Description><![CDATA[description1]]></Description>
-      <PicUrl><![CDATA['.$picurl.']]></PicUrl>
-      <Url><![CDATA['.$url.']]></Url>
-    </item>
-  </Articles>
-</xml>';
-
-
-                } else {          //用户首次关注
+                echo '
+                <xml>
+                <ToUserName><![CDATA[' . $openid . ']]></ToUserName>
+                <FromUserName><![CDATA[' . $wx_id . ']]></FromUserName>
+                <CreateTime>' . time() . '</CreateTime>
+                <MsgType><![CDATA[news]]></MsgType>
+                <ArticleCount>1</ArticleCount>
+                <Articles>
+                <item>
+                <Title><![CDATA['.$t.']]></Title>
+                <Description><![CDATA['.$m.']]></Description>
+                <PicUrl><![CDATA['.$picurl.']]></PicUrl>
+                <Url><![CDATA['.$url.']]></Url>
+                </item>
+                </Articles>
+                </xml>';
+                } else if($event == 'subscribe'&& !empty($eventkey)) {          //用户首次关注
+                    $t="商品";
+                    $m="商品详情";
                     //获取用户信息
                     $u = $this->getUserInfo($openid);
                     //用户信息入库
@@ -117,25 +120,26 @@ class WeixinController extends Controller
                         'eventkey'=>substr($eventkey,8),
                     ];
                     $id = tmp_wx_users::insertGetId($u_info);
-                    echo '<xml>
-  <ToUserName><![CDATA[' . $openid . ']]></ToUserName>
-  <FromUserName><![CDATA[' . $wx_id . ']]></FromUserName>
-  <CreateTime>12345678</CreateTime>
-  <MsgType><![CDATA[news]]></MsgType>
-  <ArticleCount>1</ArticleCount>
-  <Articles>
-    <item>
-      <Title><![CDATA[title1]]></Title>
-      <Description><![CDATA[description1]]></Description>
-      <PicUrl><![CDATA['.$picurl.']]></PicUrl>
-      <Url><![CDATA['.$url.']]></Url>
-    </item>
-  </Articles>
-</xml>';
+                    echo '
+                    <xml>
+                    <ToUserName><![CDATA[' . $openid . ']]></ToUserName>
+                    <FromUserName><![CDATA[' . $wx_id . ']]></FromUserName>
+                    <CreateTime>' . time() . '</CreateTime>
+                    <MsgType><![CDATA[news]]></MsgType>
+                    <ArticleCount>1</ArticleCount>
+                    <Articles>
+                    <item>
+                    <Title><![CDATA['.$t.']]></Title>
+                    <Description><![CDATA['.$m.']]></Description>
+                    <PicUrl><![CDATA['.$picurl.']]></PicUrl>
+                    <Url><![CDATA['.$url.']]></Url>
+                    </item>
+                    </Articles>
+                    </xml>';
                 }
             }
 
-        }
+
 
 
         if ($type == 'text') {
@@ -158,7 +162,7 @@ class WeixinController extends Controller
                 //var_dump($goods);exit;
                 $url = 'http://1809wanglei.comcto.com/jump?id=1';
                 foreach ($goods as $v) {
-                    $res = ' <xml>
+                    $res = '<xml>
   <ToUserName><![CDATA[' . $openid . ']]></ToUserName>
   <FromUserName><![CDATA[' . $wx_id . ']]></FromUserName>
   <CreateTime>' . time() . '</CreateTime>
