@@ -10,13 +10,23 @@ use Illuminate\Support\Facades\Cache;
 use App\Model\GoodsModel;
 use App\Model\info;
 use Illuminate\Support\Str;
+use App\Model\weixin\tmp_wx_users;
 class WeixinController extends Controller
 {
     public function valid()
     {
         echo $_GET['echostr'];
     }
-
+    //获取微信用户信息
+    public function getUserInfo($openid)
+    {
+        $token=getWxAccessToken();
+        $url = 'https://api.weixin.qq.com/cgi-bin/user/info?access_token='.$token.'&openid='.$openid.'&lang=zh_CN';
+        // var_dump($url);exit;
+        $data = file_get_contents($url);
+        $u = json_decode($data,true);
+        return $u;
+    }
     public function wxEvent()
     {
         //接收微信服务器推送
@@ -35,12 +45,16 @@ class WeixinController extends Controller
         $wx_id = $data->ToUserName;// 公众号ID
         $openid = $data->FromUserName;//用户OpenID
         $event = $data->Event;//事件类型
+        $eventkey=$data->EventKey;//二维码
+        $picurl='http://image.baidu.com/search/detail?ct=503316480&z=0&ipn=d&word=%E5%9B%BE%E7%89%87jpg&hs=2&pn=0&spn=0&di=78031135380&pi=0&rn=1&tn=baiduimagedetail&is=0%2C0&ie=utf-8&oe=utf-8&cl=2&lm=-1&cs=2322346566%2C2175418725&os=1836096180%2C2499822995&simid=0%2C0&adpicid=0&lpn=0&ln=30&fr=ala&fm=&sme=&cg=&bdtype=0&oriquery=%E5%9B%BE%E7%89%87jpg&objurl=http%3A%2F%2Fimg.jieju.cn%2Fuserfiles%2Fupload%2Fimage%2F20180820%2F6367035969868343062045193.jpg&fromurl=ippr_z2C%24qAzdH3FAzdH3Fooo_z%26e3B3tj37_z%26e3BvgAzdH3FNjofAzdH3Fda8babdaAzdH3FDjpwtsbacl9c_z%26e3Bfip4s&gsm=0&islist=&querylist=';
+        $url='http://1809wanglei.comcto.com/';
         if ($event == 'subscribe') {        //扫码关注事件
-            //根据openid判断用户是否已存在
-            $local_user = weixin::where(['openid' => $openid])->first();
-            if ($local_user) {
-                //用户之前关注过
-                echo '
+            if($eventkey==''){
+                //根据openid判断用户是否已存在
+                $local_user = weixin::where(['openid' => $openid])->first();
+                if ($local_user) {
+                    //用户之前关注过
+                    echo '
                     <xml>
                     <ToUserName><![CDATA[' . $openid . ']]></ToUserName>
                     <FromUserName><![CDATA[' . $wx_id . ']]></FromUserName>
@@ -48,18 +62,20 @@ class WeixinController extends Controller
                     <MsgType><![CDATA[text]]></MsgType>
                     <Content><![CDATA[' . '欢迎回来 ' . $local_user['nickname'] . ']]></Content>
                     </xml>';
-            } else {          //用户首次关注
-                //获取用户信息
-                $u = $this->getUserInfo($openid);
-                //用户信息入库
-                $u_info = [
-                    'openid' => $u['openid'],
-                    'nickname' => $u['nickname'],
-                    'sex' => $u['sex'],
-                    'headimgurl' => $u['headimgurl'],
-                ];
-                $id = weixin::insertGetId($u_info);
-                echo '
+
+
+                } else {          //用户首次关注
+                    //获取用户信息
+                    $u = $this->getUserInfo($openid);
+                    //用户信息入库
+                    $u_info = [
+                        'openid' => $u['openid'],
+                        'nickname' => $u['nickname'],
+                        'sex' => $u['sex'],
+                        'headimgurl' => $u['headimgurl'],
+                    ];
+                    $id = weixin::insertGetId($u_info);
+                    echo '
                     <xml>
                     <ToUserName><![CDATA[' . $openid . ']]></ToUserName>
                     <FromUserName><![CDATA[' . $wx_id . ']]></FromUserName>
@@ -67,7 +83,58 @@ class WeixinController extends Controller
                     <MsgType><![CDATA[text]]></MsgType>
                     <Content><![CDATA[' . '欢迎关注 ' . $u['nickname'] . ']]></Content>
                     </xml>';
+                }
+            }else{
+                $local_user = tmp_wx_users::where(['openid' => $openid])->first();
+                if ($local_user) {
+                    //用户之前关注过
+                    echo '<xml>
+  <ToUserName><![CDATA[' . $openid . ']]></ToUserName>
+  <FromUserName><![CDATA[' . $wx_id . ']]></FromUserName>
+  <CreateTime>12345678</CreateTime>
+  <MsgType><![CDATA[news]]></MsgType>
+  <ArticleCount>1</ArticleCount>
+  <Articles>
+    <item>
+      <Title><![CDATA[title1]]></Title>
+      <Description><![CDATA[description1]]></Description>
+      <PicUrl><![CDATA['.$picurl.']]></PicUrl>
+      <Url><![CDATA['.$url.']]></Url>
+    </item>
+  </Articles>
+</xml>';
+
+
+                } else {          //用户首次关注
+                    //获取用户信息
+                    $u = $this->getUserInfo($openid);
+                    //用户信息入库
+                    $u_info = [
+                        'openid' => $u['openid'],
+                        'nickname' => $u['nickname'],
+                        'sex' => $u['sex'],
+                        'headimgurl' => $u['headimgurl'],
+                        'eventkey'=>substr($eventkey,8),
+                    ];
+                    $id = tmp_wx_users::insertGetId($u_info);
+                    echo '<xml>
+  <ToUserName><![CDATA[' . $openid . ']]></ToUserName>
+  <FromUserName><![CDATA[' . $wx_id . ']]></FromUserName>
+  <CreateTime>12345678</CreateTime>
+  <MsgType><![CDATA[news]]></MsgType>
+  <ArticleCount>1</ArticleCount>
+  <Articles>
+    <item>
+      <Title><![CDATA[title1]]></Title>
+      <Description><![CDATA[description1]]></Description>
+      <PicUrl><![CDATA['.$picurl.']]></PicUrl>
+      <Url><![CDATA['.$url.']]></Url>
+    </item>
+  </Articles>
+</xml>';
+                }
             }
+
         }
 
 
@@ -176,8 +243,7 @@ class WeixinController extends Controller
      // echo $res;exit;
         if($res){
             echo '
-<xml>
-<ToUserName><![CDATA[' . $openid . ']]></ToUserName>
+<xml><ToUserName><![CDATA[' . $openid . ']]></ToUserName>
 <FromUserName><![CDATA['.$wx_id.']]></FromUserName>
 <CreateTime>' . time() . '</CreateTime>
 <MsgType><![CDATA[text]]></MsgType>
@@ -197,8 +263,7 @@ class WeixinController extends Controller
             ];
             info::insert($info);
             echo '
-<xml>
-<ToUserName><![CDATA[' . $openid . ']]></ToUserName>
+<xml><ToUserName><![CDATA[' . $openid . ']]></ToUserName>
 <FromUserName><![CDATA['.$wx_id.']]></FromUserName>
 <CreateTime>' . time() . '</CreateTime>
 <MsgType><![CDATA[text]]></MsgType>

@@ -19,4 +19,10 @@ Route::group([
     $router->resource('user', UserController::class);
     //素材管理
     $router->resource('sulist', SuController::class);
+    //素材添加
+    $router->post('add', 'SuController@add')->name('admin.home');
+    //消息群发
+    $router->resource('all', SendController::class);
+    //qunfa
+    $router->post('send', 'SendController@send')->name('admin.home');
 });
