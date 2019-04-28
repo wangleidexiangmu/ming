@@ -74,6 +74,7 @@ class GoodsController extends Controller
         }
 
         $arr = GoodsModel::where('id',$goods_id)->get();
+        $info = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] .$_SERVER['REQUEST_URI'];
 
         return view('goods.goodsdetail',['arr'=>$arr,'info'=>$info]);
     }

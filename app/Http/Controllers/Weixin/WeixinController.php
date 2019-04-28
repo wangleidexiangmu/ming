@@ -95,41 +95,41 @@ echo "<xml>
 </item>
 </Articles>
 </xml>";
-                }else if ($eventkey == ''&& $event == 'subscribe') {
-               //根据openid判断用户是否已存在
-               $local_user = weixin::where(['openid' => $openid])->first();
-              if ($local_user) {
-                  //用户之前关注过
-                   echo '
-                   <xml>
-                   <ToUserName><![CDATA['.$openid.']]></ToUserName>
-                  <FromUserName><![CDATA['.$wx_id.']]></FromUserName>
-                   <CreateTime>'.time().'</CreateTime>
-                  <MsgType><![CDATA[text]]></MsgType>
-                  <Content><![CDATA['.'欢迎回来 '.$local_user['nickname'].']]></Content>
-                   </xml>';
-
-               } else {
-                   //获取用户信息
-                   $u = $this->getUserInfo($openid);
-                   //用户信息入库
-                   $u_info = [
-                        'openid' => $u['openid'],
-                      'nickname' => $u['nickname'],
-                       'sex' => $u['sex'],
-                        'headimgurl' => $u['headimgurl'],
-                    ];
-                  $id = weixin::insertGetId($u_info);
-                   echo '
-                   <xml>
-                   <ToUserName><![CDATA['.$openid.']]></ToUserName>
-                   <FromUserName><![CDATA['.$wx_id.']]></FromUserName>
-                   <CreateTime>'.time().'</CreateTime>
-                    <MsgType><![CDATA[text]]></MsgType>
-                   <Content><![CDATA['.'欢迎关注'.$u['nickname'].']]></Content>
-                   </xml>';
-               }
-            }
+                }//else if ($eventkey == ''&& $event == 'subscribe') {
+//               //根据openid判断用户是否已存在
+//               $local_user = weixin::where(['openid' => $openid])->first();
+//              if ($local_user) {
+//                  //用户之前关注过
+//                   echo '
+//                   <xml>
+//                   <ToUserName><![CDATA['.$openid.']]></ToUserName>
+//                  <FromUserName><![CDATA['.$wx_id.']]></FromUserName>
+//                   <CreateTime>'.time().'</CreateTime>
+//                  <MsgType><![CDATA[text]]></MsgType>
+//                  <Content><![CDATA['.'欢迎回来 '.$local_user['nickname'].']]></Content>
+//                   </xml>';
+//
+//               } else {
+//                   //获取用户信息
+//                   $u = $this->getUserInfo($openid);
+//                   //用户信息入库
+//                   $u_info = [
+//                        'openid' => $u['openid'],
+//                      'nickname' => $u['nickname'],
+//                       'sex' => $u['sex'],
+//                        'headimgurl' => $u['headimgurl'],
+//                    ];
+//                  $id = weixin::insertGetId($u_info);
+//                   echo '
+//                   <xml>
+//                   <ToUserName><![CDATA['.$openid.']]></ToUserName>
+//                   <FromUserName><![CDATA['.$wx_id.']]></FromUserName>
+//                   <CreateTime>'.time().'</CreateTime>
+//                    <MsgType><![CDATA[text]]></MsgType>
+//                   <Content><![CDATA['.'欢迎关注'.$u['nickname'].']]></Content>
+//                   </xml>';
+//               }
+//            }
 
 
 

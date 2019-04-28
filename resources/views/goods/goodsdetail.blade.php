@@ -56,6 +56,7 @@
     </style>
 </head>
 <body>
+
 <div class="flex-center position-ref full-height">
     @if (Route::has('login'))
         <div class="top-right links">
@@ -82,7 +83,7 @@
                     <td>数量</td>
                     <td>访问</td>
                 </tr>
-        @foreach( $info as $v)
+        @foreach( $arr as $v)
                     <tr>
 
                         <td>{{$v['name']}}</td>
@@ -99,11 +100,30 @@
 @endforeach
 
             </table>
+            <div class="content">
+                <div class="title m-b-md">
 
+                </div>
+                <div id="qrcode"></div>
+
+            </div>
+    </div>
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/qrcode.min.js"></script>
+        <script type="text/javascript">
+            new QRCode(document.getElementById("qrcode"), "{{$info}}");
+            //ajax轮询，检查订单支付状态
+
+        </script>
 
 
         </ul>
     </div>
 </div>
+
+</body>
+</html>
+
+
 </body>
 </html>
