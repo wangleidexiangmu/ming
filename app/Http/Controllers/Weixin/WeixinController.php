@@ -49,47 +49,8 @@ class WeixinController extends Controller
         $picurl='http://image.baidu.com/search/detail?ct=503316480&z=0&ipn=d&word=%E5%9B%BE%E7%89%87jpg&hs=2&pn=0&spn=0&di=78031135380&pi=0&rn=1&tn=baiduimagedetail&is=0%2C0&ie=utf-8&oe=utf-8&cl=2&lm=-1&cs=2322346566%2C2175418725&os=1836096180%2C2499822995&simid=0%2C0&adpicid=0&lpn=0&ln=30&fr=ala&fm=&sme=&cg=&bdtype=0&oriquery=%E5%9B%BE%E7%89%87jpg&objurl=http%3A%2F%2Fimg.jieju.cn%2Fuserfiles%2Fupload%2Fimage%2F20180820%2F6367035969868343062045193.jpg&fromurl=ippr_z2C%24qAzdH3FAzdH3Fooo_z%26e3B3tj37_z%26e3BvgAzdH3FNjofAzdH3Fda8babdaAzdH3FDjpwtsbacl9c_z%26e3Bfip4s&gsm=0&islist=&querylist=';
         $url='http://1809wanglei.comcto.com/puball';
 
-        if ($event == 'subscribe') {        //扫码关注事件
-//            if ($eventkey == '') {
-////                //根据openid判断用户是否已存在
-////                $local_user = weixin::where(['openid' => $openid])->first();
-////                if ($local_user) {
-////                    //用户之前关注过
-////                    echo '
-////                    <xml>
-////                    <ToUserName><![CDATA[' . $openid . ']]></ToUserName>
-////                    <FromUserName><![CDATA[' . $wx_id . ']]></FromUserName>
-////                    <CreateTime>' . time() . '</CreateTime>
-////                    <MsgType><![CDATA[text]]></MsgType>
-////                    <Content><![CDATA[' . '欢迎回来 ' . $local_user['nickname'] . ']]></Content>
-////                    </xml>';
-////
-////                } else {
-////                    //获取用户信息
-////                    $u = $this->getUserInfo($openid);
-////                    //用户信息入库
-////                    $u_info = [
-////                        'openid' => $u['openid'],
-////                        'nickname' => $u['nickname'],
-////                        'sex' => $u['sex'],
-////                        'headimgurl' => $u['headimgurl'],
-////                    ];
-////                    $id = weixin::insertGetId($u_info);
-////                    echo '
-////                    <xml>
-////                    <ToUserName><![CDATA[' . $openid . ']]></ToUserName>
-////                    <FromUserName><![CDATA[' . $wx_id . ']]></FromUserName>
-////                    <CreateTime>' . time() . '</CreateTime>
-////                    <MsgType><![CDATA[text]]></MsgType>
-////                    <Content><![CDATA[' . '欢迎关注 ' . $u['nickname'] . ']]></Content>
-////                    </xml>';
-////                }
-////            }
-////
-////        }//else
-  //($event == 'subscribe'&& !empty($eventkey)) {
-                  $t="商品";
-                  $m="商品详情";
+        if ($event == 'SCAN') {        //扫码关注事
+            $t="商品";$m="商品详情";
 echo "<xml>
 <ToUserName><![CDATA['.$openid.']]></ToUserName>
 <FromUserName><![CDATA['.$wx_id.']]></FromUserName>
@@ -105,7 +66,7 @@ echo "<xml>
 </item>
 </Articles>
 </xml>";
-                  }else if($event=='SCAN'){
+                  }else if($event=='subscribe'){
                       $t="商品";
                       $m="商品详情";
                       //获取用户信息
@@ -134,10 +95,47 @@ echo "<xml>
 </item>
 </Articles>
 </xml>";
-                }
+                }else if ($eventkey == ''&& $event == 'subscribe') {
+               //根据openid判断用户是否已存在
+               $local_user = weixin::where(['openid' => $openid])->first();
+              if ($local_user) {
+                  //用户之前关注过
+                   echo '
+                   <xml>
+                   <ToUserName><![CDATA['.$openid.']]></ToUserName>
+                  <FromUserName><![CDATA['.$wx_id.']]></FromUserName>
+                   <CreateTime>'.time().'</CreateTime>
+                  <MsgType><![CDATA[text]]></MsgType>
+                  <Content><![CDATA['.'欢迎回来 '.$local_user['nickname'].']]></Content>
+                   </xml>';
+
+               } else {
+                   //获取用户信息
+                   $u = $this->getUserInfo($openid);
+                   //用户信息入库
+                   $u_info = [
+                        'openid' => $u['openid'],
+                      'nickname' => $u['nickname'],
+                       'sex' => $u['sex'],
+                        'headimgurl' => $u['headimgurl'],
+                    ];
+                  $id = weixin::insertGetId($u_info);
+                   echo '
+                   <xml>
+                   <ToUserName><![CDATA['.$openid.']]></ToUserName>
+                   <FromUserName><![CDATA['.$wx_id.']]></FromUserName>
+                   <CreateTime>'.time().'</CreateTime>
+                    <MsgType><![CDATA[text]]></MsgType>
+                   <Content><![CDATA['.'欢迎关注'.$u['nickname'].']]></Content>
+                   </xml>';
+               }
+            }
 
 
-           
+
+
+
+
 
 
 
