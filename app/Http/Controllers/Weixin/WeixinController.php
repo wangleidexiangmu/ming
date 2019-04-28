@@ -50,52 +50,58 @@ class WeixinController extends Controller
         $url='http://1809wanglei.comcto.com/puball';
 
         if ($event == 'SCAN') {        //扫码关注事
-            $t="商品";$m="商品详情";
-echo "<xml>
-<ToUserName><![CDATA['.$openid.']]></ToUserName>
-<FromUserName><![CDATA['.$wx_id.']]></FromUserName>
-<CreateTime>'.time().'</CreateTime>
+            $local_user = tmp_wx_users::where(['openid' => $openid])->first();
+            if ($local_user) {
+                $t = "商品";
+                $m = "商品详情";
+                echo '
+<xml>
+<ToUserName><![CDATA[' . $openid . ']]></ToUserName>
+<FromUserName><![CDATA[' . $wx_id . ']]></FromUserName>
+<CreateTime>' . time() . '</CreateTime>
 <MsgType><![CDATA[news]]></MsgType>
 <ArticleCount>1</ArticleCount>
 <Articles>
 <item>
-<Title><![CDATA['.$t.']]></Title>
-<Description><![CDATA['.$m.']]></Description>
-<PicUrl><![CDATA['.$picurl.']]></PicUrl>
-<Url><![CDATA['.$url.']]></Url>
+<Title><![CDATA[' . $t . ']]></Title>
+<Description><![CDATA[' . $m . ']]></Description>
+<PicUrl><![CDATA[' . $picurl . ']]></PicUrl>
+<Url><![CDATA[' . $url . ']]></Url>
 </item>
 </Articles>
-</xml>";
-                  }else if($event=='subscribe'){
-                      $t="商品";
-                      $m="商品详情";
-                      //获取用户信息
-                      $u = $this->getUserInfo($openid);
-                      //用户信息入库
-                      $u_info = [
-                          'openid' => $u['openid'],
-                          'nickname' => $u['nickname'],
-                          'sex' => $u['sex'],
-                          'headimgurl' => $u['headimgurl'],
-                          'eventkey'=>substr($eventkey,8),
-                      ];
-                      $id = tmp_wx_users::insertGetId($u_info);
-echo "<xml>
-<ToUserName><![CDATA['.$openid.']]></ToUserName>
-<FromUserName><![CDATA['.$wx_id.']]></FromUserName>
-<CreateTime>'.time().'</CreateTime>
+</xml>';
+            } else {
+                $t = "商品";
+                $m = "商品详情";
+                //获取用户信息
+                $u = $this->getUserInfo($openid);
+                //用户信息入库
+                $u_info = [
+                    'openid' => $u['openid'],
+                    'nickname' => $u['nickname'],
+                    'sex' => $u['sex'],
+                    'headimgurl' => $u['headimgurl'],
+                    'eventkey' => substr($eventkey, 8),
+                ];
+                $id = tmp_wx_users::insertGetId($u_info);
+                echo '
+<xml>
+<ToUserName><![CDATA[' . $openid . ']]></ToUserName>
+<FromUserName><![CDATA[' . $wx_id . ']]></FromUserName>
+<CreateTime>' . time() . '</CreateTime>
 <MsgType><![CDATA[news]]></MsgType>
 <ArticleCount>1</ArticleCount>
 <Articles>
 <item>
-<Title><![CDATA['.$t.']]></Title>
-<Description><![CDATA['.$m.']]></Description>
-<PicUrl><![CDATA['.$picurl.']]></PicUrl>
-<Url><![CDATA['.$url.']]></Url>
+<Title><![CDATA[' . $t . ']]></Title>
+<Description><![CDATA[' . $m . ']]></Description>
+<PicUrl><![CDATA[' . $picurl . ']]></PicUrl>
+<Url><![CDATA[' . $url . ']]></Url>
 </item>
 </Articles>
-</xml>";
-                }//else if ($eventkey == ''&& $event == 'subscribe') {
+</xml>';
+            }
+        }//else if ($eventkey == ''&& $event == 'subscribe') {
 //               //根据openid判断用户是否已存在
 //               $local_user = weixin::where(['openid' => $openid])->first();
 //              if ($local_user) {
