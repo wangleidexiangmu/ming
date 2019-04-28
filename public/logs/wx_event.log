@@ -1005,3 +1005,14 @@
 =======
 >>>>>>> 4ddf9ff0689b8bb5d8bbc49b6b017027aea83a59
 >>>>>>> cd9459a52af8e65ba299eedb2d3c89b969a97d4b
+2019-04-28 19:50:03<xml><ToUserName><![CDATA[gh_20c55a8ab149]]></ToUserName>
+<FromUserName><![CDATA[oYL3b5krtrmqxlwXs0A_7cv4vaJg]]></FromUserName>
+<CreateTime>1556450800</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[SCAN]]></Event>
+<EventKey><![CDATA[123]]></EventKey>
+<Ticket><![CDATA[gQHG8DwAAAAAAAAAAS5odHRwOi8vd2VpeGluLnFxLmNvbS9xLzAyeW10aUFZd1pmckMxMDAwMGcwM3cAAgSCRcVcAwQAAAAA]]></Ticket>
+</xml>
+
+
+
