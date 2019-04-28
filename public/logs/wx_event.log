@@ -849,3 +849,26 @@
 
 
 >>>>>>> 05cf5da9ba4ebab37cd84d45ab4567ea7e1d5f4b
+2019-04-28 18:54:17<xml><ToUserName><![CDATA[gh_20c55a8ab149]]></ToUserName>
+<FromUserName><![CDATA[oYL3b5krtrmqxlwXs0A_7cv4vaJg]]></FromUserName>
+<CreateTime>1556448857</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[SCAN]]></Event>
+<EventKey><![CDATA[123]]></EventKey>
+<Ticket><![CDATA[gQHG8DwAAAAAAAAAAS5odHRwOi8vd2VpeGluLnFxLmNvbS9xLzAyeW10aUFZd1pmckMxMDAwMGcwM3cAAgSCRcVcAwQAAAAA]]></Ticket>
+</xml>
+2019-04-28 18:54:26<xml><ToUserName><![CDATA[gh_20c55a8ab149]]></ToUserName>
+<FromUserName><![CDATA[oYL3b5krtrmqxlwXs0A_7cv4vaJg]]></FromUserName>
+<CreateTime>1556448865</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[unsubscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+2019-04-28 18:54:31<xml><ToUserName><![CDATA[gh_20c55a8ab149]]></ToUserName>
+<FromUserName><![CDATA[oYL3b5krtrmqxlwXs0A_7cv4vaJg]]></FromUserName>
+<CreateTime>1556448871</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[subscribe]]></Event>
+<EventKey><![CDATA[qrscene_123]]></EventKey>
+<Ticket><![CDATA[gQHG8DwAAAAAAAAAAS5odHRwOi8vd2VpeGluLnFxLmNvbS9xLzAyeW10aUFZd1pmckMxMDAwMGcwM3cAAgSCRcVcAwQAAAAA]]></Ticket>
+</xml>
