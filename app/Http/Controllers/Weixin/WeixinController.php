@@ -176,8 +176,7 @@ class WeixinController extends Controller
      // echo $res;exit;
         if($res){
             echo '
-<xml>
-<ToUserName><![CDATA[' . $openid . ']]></ToUserName>
+<xml><ToUserName><![CDATA[' . $openid . ']]></ToUserName>
 <FromUserName><![CDATA['.$wx_id.']]></FromUserName>
 <CreateTime>' . time() . '</CreateTime>
 <MsgType><![CDATA[text]]></MsgType>
@@ -197,8 +196,7 @@ class WeixinController extends Controller
             ];
             info::insert($info);
             echo '
-<xml>
-<ToUserName><![CDATA[' . $openid . ']]></ToUserName>
+<xml><ToUserName><![CDATA[' . $openid . ']]></ToUserName>
 <FromUserName><![CDATA['.$wx_id.']]></FromUserName>
 <CreateTime>' . time() . '</CreateTime>
 <MsgType><![CDATA[text]]></MsgType>
