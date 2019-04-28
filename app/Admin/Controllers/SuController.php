@@ -1,14 +1,16 @@
 <?php
 
 namespace App\Admin\Controllers;
-
 use App\Model\weixin\txt;
+use GuzzleHttp\Client;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\HasResourceActions;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
+use http\Env\Request;
+
 
 class SuController extends Controller
 {
@@ -27,6 +29,7 @@ class SuController extends Controller
             ->description('description')
             ->body($this->grid());
     }
+
 
     /**
      * Show interface.
@@ -129,4 +132,36 @@ class SuController extends Controller
 
         return $form;
     }
+    public function add(Content $content)
+    {
+
+        $token = getWxAccessToken();
+        $url = 'https://api.weixin.qq.com/cgi-bin/media/upload?access_token=' . $token . '&type=image';
+        $client = new Client();
+        $response = $client->Request('post', $url, [
+            'multipart' => [
+
+                [
+                    'name' => 'media',
+                    'contents' => fopen("image/a (2).jpg", 'r'),
+                ],
+            ]
+
+        ]);
+        $data = $response->getBody();
+        $data= json_decode($data,true);
+        $info=[
+            'image'=>$data['media_id'],
+        ];
+        // var_dump($data);
+        $bool= txt::insert($info);
+        $res=txt::all();
+        //var_dump($res);
+        return $content
+            ->header('素材管理')
+            ->description('素材添加')
+            ->body( view('admin.weixin.media',['res'=>$res]));
+
+    }
+
 }

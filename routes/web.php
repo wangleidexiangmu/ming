@@ -51,3 +51,10 @@ Route::any('del','Order\IndexController@del');//定时任务
 Route::get('geturl','Weixin\WeixinController@geturl');
 //获取code
 Route::get('getcode','Weixin\WeixinController@prower');
+//素材添加
+Route::get('add','SuController@add');
+//扫码参数
+Route::get('so','Weixin\SOController@so');
+
+//分享
+Route::get('puball','Weixin\SOController@puball');
