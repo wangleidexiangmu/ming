@@ -253,7 +253,7 @@ echo $res;
         $data = [
             'jsconfig' => $js_config
         ];
-        return view('weixin.js', $data,['res'=>$res]);
+        return view('weixin.js', $data,['res'=>$res],['id'=>$id]);
 
 
     }
