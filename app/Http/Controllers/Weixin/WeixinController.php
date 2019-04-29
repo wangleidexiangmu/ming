@@ -295,15 +295,16 @@ echo $res;
        $res= info::where(['openid'=>$user_info['openid']])->first();
      // echo $res;exit;
         if($res){
-            echo '
-<xml><ToUserName><![CDATA['.$openid.']]></ToUserName>
-<FromUserName><![CDATA['.$wx_id.']]></FromUserName>
-<CreateTime>'.time().'</CreateTime>
-<MsgType><![CDATA[text]]></MsgType>
-<Content><![CDATA['.'欢迎回来'.$user_info['nickname'].']]></Content>
-</xml>';
-            echo '欢迎回来';
+//            echo '
+//<xml><ToUserName><![CDATA['.$openid.']]></ToUserName>
+//<FromUserName><![CDATA['.$wx_id.']]></FromUserName>
+//<CreateTime>'.time().'</CreateTime>
+//<MsgType><![CDATA[text]]></MsgType>
+//<Content><![CDATA['.'欢迎回来'.$user_info['nickname'].']]></Content>
+//</xml>';
             header('Refresh:3;url=/order/list');
+            echo '欢迎回来';
+
         }else{
             $info=[
                 'openid'=>$user_info['openid'],
@@ -316,15 +317,16 @@ echo $res;
                 'head'=>$user_info['headimgurl']
             ];
             info::insert($info);
-            echo '
-<xml><ToUserName><![CDATA['.$openid.']]></ToUserName>
-<FromUserName><![CDATA['.$wx_id.']]></FromUserName>
-<CreateTime>'.time().'</CreateTime>
-<MsgType><![CDATA[text]]></MsgType>
-<Content><![CDATA['.'欢迎关注'.$user_info['nickname'].']]></Content>
-</xml>';
-            echo '欢迎关注';
+//            echo '
+//<xml><ToUserName><![CDATA['.$openid.']]></ToUserName>
+//<FromUserName><![CDATA['.$wx_id.']]></FromUserName>
+//<CreateTime>'.time().'</CreateTime>
+//<MsgType><![CDATA[text]]></MsgType>
+//<Content><![CDATA['.'欢迎关注'.$user_info['nickname'].']]></Content>
+//</xml>';
             header('Refresh:3;url=/order/list');
+            echo '欢迎关注';
+
         }
 
 
