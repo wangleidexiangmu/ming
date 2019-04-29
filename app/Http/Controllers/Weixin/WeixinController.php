@@ -303,6 +303,7 @@ echo $res;
 <Content><![CDATA['.'欢迎回来'.$user_info['nickname'].']]></Content>
 </xml>';
             echo '欢迎回来';
+            header('Refresh:3;url=/order/list');
         }else{
             $info=[
                 'openid'=>$user_info['openid'],
@@ -323,6 +324,7 @@ echo $res;
 <Content><![CDATA['.'欢迎关注'.$user_info['nickname'].']]></Content>
 </xml>';
             echo '欢迎关注';
+            header('Refresh:3;url=/order/list');
         }
 
 

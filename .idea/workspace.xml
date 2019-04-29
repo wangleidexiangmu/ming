@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="90962105-8245-46bb-8800-ff99a57c516b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Weixin/WeixinController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Weixin/WeixinController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/model/CartModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/CartModel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/model/GoodsModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/GoodsModel.php" afterDir="false" />
     </list>
@@ -18,11 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="WeixinController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="WeixinController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Weixin/WeixinController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="360" column="14" selection-start-line="360" selection-start-column="14" selection-end-line="360" selection-end-column="14" />
+            <state relative-caret-position="-683">
+              <caret line="305" column="48" selection-start-line="305" selection-start-column="48" selection-end-line="305" selection-end-column="48" />
               <folding>
                 <element signature="e#46#85#0#PHP" expanded="true" />
               </folding>
@@ -30,7 +30,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IndexController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="IndexController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Order/IndexController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="178">
@@ -58,6 +58,7 @@
       <find>/pay/success</find>
       <find>Cli</find>
       <find>Client</find>
+      <find>head</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -113,8 +114,8 @@
         <option value="&lt;9c710de4-13cb-4e80-965f-20ebfb6ab302&gt;/app/Http/Controllers/Weixin/WeixinController.php" />
         <option value="&lt;9c710de4-13cb-4e80-965f-20ebfb6ab302&gt;/resources/views/weixin/js.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Goods/GoodsController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Weixin/WeixinController.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Weixin/WeixinController.php" />
       </list>
     </option>
   </component>
@@ -347,15 +348,15 @@
       <workItem from="1556069217604" duration="1798000" />
       <workItem from="1556072220842" duration="54525000" />
       <workItem from="1556369120839" duration="29669000" />
-      <workItem from="1556500701626" duration="14754000" />
+      <workItem from="1556500701626" duration="15238000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="169384000" />
+    <option name="totallyTimeSpent" value="169868000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-2" y="0" width="1378" height="728" extended-state="1" />
+    <frame x="-2" y="0" width="1378" height="728" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="7" />
@@ -709,22 +710,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Weixin/WeixinController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="360" column="14" selection-start-line="360" selection-start-column="14" selection-end-line="360" selection-end-column="14" />
-          <folding>
-            <element signature="e#46#85#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Order/IndexController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="178">
           <caret line="46" column="6" lean-forward="true" selection-start-line="46" selection-start-column="6" selection-end-line="46" selection-end-column="44" />
           <folding>
             <element signature="e#45#69#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Weixin/WeixinController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-683">
+          <caret line="305" column="48" selection-start-line="305" selection-start-column="48" selection-end-line="305" selection-end-column="48" />
+          <folding>
+            <element signature="e#46#85#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
