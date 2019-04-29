@@ -268,7 +268,7 @@ echo $res;
 
      //   echo '<pre>';print_r($_GET);echo '</pre>';
 
-        echo '<pre>';print_r($_GET);echo '</pre>';
+       // echo '<pre>';print_r($_GET);echo '</pre>';
 
         $code = $_GET['code'];
 
@@ -276,7 +276,7 @@ echo $res;
         $url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='.env('WX_APP_ID').'&secret='.env('WX_APP_SEC').'&code='.$code.'&grant_type=authorization_code';
         $response = json_decode(file_get_contents($url),true);
 
-        echo '<pre>';print_r($response);echo '</pre>';
+        //echo '<pre>';print_r($response);echo '</pre>';
         $access_token = $response['access_token'];
         $openid = $response['openid'];
         //获取用户信息
@@ -285,7 +285,7 @@ echo $res;
 
        // echo '<pre>';print_r($user_info);echo '</pre>';
 
-       echo '<pre>';print_r($user_info);echo '</pre>';
+       //echo '<pre>';print_r($user_info);echo '</pre>';
 
 
         $openid=$user_info['openid'];
@@ -325,4 +325,34 @@ echo $res;
 
 
 }
+    public function card(){
+        $token=getWxAccessToken();
+        $res='https://api.weixin.qq.com/cgi-bin/menu/create?access_token='.$token.'';
+        $arrInfo =[
+            "button"=>[
+                [
+                    "type"=>"view",
+                    "name"=>"最新福利",
+                    "url"=>"http://1809wanglei.comcto.com/getcode"
+                ],
+
+            ] ,
+        ];
+
+
+        $data=json_encode($arrInfo,JSON_UNESCAPED_UNICODE);//处理中文编码
+        //发送请求
+        $clinet= new Client();
+        //发送json字符串
+        $response=$clinet->request('POST',$res,[
+            'body'=>$data
+        ]);
+        //处理相应
+        $reslut=$response->getBody();
+        //转数组
+        $arr = json_decode($reslut,true);
+        //判断错误信息
+
+
+    }
 }
