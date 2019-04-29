@@ -69,7 +69,7 @@ class GoodsController extends Controller
         //浏览历史
         $info = [];
         foreach ($list2 as $k=>$v){
-            $info[] = GoodsModel::where(['id'=>$k])->first()->toArray();
+            $info[] = GoodsModel::where(['id'=>$k])->first();
 //            print_r($info);
         }
 

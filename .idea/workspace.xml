@@ -227,7 +227,7 @@
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="-18" />
     <option name="width" value="1378" />
     <option name="height" value="728" />
@@ -369,15 +369,15 @@
       <workItem from="1556069217604" duration="1798000" />
       <workItem from="1556072220842" duration="54525000" />
       <workItem from="1556369120839" duration="29669000" />
-      <workItem from="1556500701626" duration="10398000" />
+      <workItem from="1556500701626" duration="10883000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="165028000" />
+    <option name="totallyTimeSpent" value="165513000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-18" y="0" width="1378" height="728" extended-state="1" />
+    <frame x="-18" y="0" width="1378" height="728" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="7" />
