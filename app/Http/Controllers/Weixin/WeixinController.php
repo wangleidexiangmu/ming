@@ -335,7 +335,7 @@ echo $res;
                 [
                     "type"=>"view",
                     "name"=>"最新福利",
-                    "url"=>"http://1809wanglei.comcto.com/url",
+                    "url"=>"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxe750a38a8fe84b93&redirect_uri=http%3A%2F%2F1809wanglei.comcto.com%2Fgeturl&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect",
                 ],
 
             ] ,
@@ -357,7 +357,7 @@ echo $res;
 
 
     }
-    public function url(){
-        $url='https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxe750a38a8fe84b93&redirect_uri=http%3A%2F%2F1809wanglei.comcto.com%2Fgeturl&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
-    }
+//    public function url(){
+//        $url='https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxe750a38a8fe84b93&redirect_uri=http%3A%2F%2F1809wanglei.comcto.com%2Fgeturl&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
+//    }
 }
