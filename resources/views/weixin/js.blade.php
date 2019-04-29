@@ -12,20 +12,20 @@
 
 
 {{--//<button id="btn1">选择照片</button>--}}
-<button id="pub">分享</button>
-<table border="1">
-    <tr>
-        <td>
-            <img src="" alt="" id="imgs0" width="300">
-        </td>
-        <td>
-            <img src="" alt="" id="imgs1"  width="300">
-        </td>
-        <td>
-            <img src="" alt="" id="imgs2"  width="300">
-        </td>
-    </tr>
-</table>
+{{--<button id="pub">分享</button>--}}
+{{--<table border="1">--}}
+    {{--<tr>--}}
+        {{--<td>--}}
+            {{--<img src="" alt="" id="imgs0" width="300">--}}
+        {{--</td>--}}
+        {{--<td>--}}
+            {{--<img src="" alt="" id="imgs1"  width="300">--}}
+        {{--</td>--}}
+        {{--<td>--}}
+            {{--<img src="" alt="" id="imgs2"  width="300">--}}
+        {{--</td>--}}
+    {{--</tr>--}}
+{{--</table>--}}
 <script src="/js/jquery.min.js"></script>
 <script src="http://res2.wx.qq.com/open/js/jweixin-1.4.0.js "></script>
 <script>
@@ -83,7 +83,7 @@
             });
         });
         wx.ready(function(){
-          var link = window.location.href="http://1809wanglei.comcto.com";
+          var link = window.location.href="http://1809wanglei.comcto.com/ask?id={{$res['id']}}";
           var protocol = window.location.protocol;
           var host = window.location.host;
           wx.updateAppMessageShareData({
