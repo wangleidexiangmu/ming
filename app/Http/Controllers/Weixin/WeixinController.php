@@ -172,6 +172,7 @@ class WeixinController extends Controller
 </xml>';
 echo $res;
             }else {
+
             $goods= GoodsModel::where(['id'=>1])->first();
 
                 $url = 'http://1809wanglei.comcto.com/jump?id=1';
@@ -295,11 +296,11 @@ echo $res;
      // echo $res;exit;
         if($res){
             echo '
-<xml><ToUserName><![CDATA[' . $openid . ']]></ToUserName>
+<xml><ToUserName><![CDATA['.$openid.']]></ToUserName>
 <FromUserName><![CDATA['.$wx_id.']]></FromUserName>
-<CreateTime>' . time() . '</CreateTime>
+<CreateTime>'.time().'</CreateTime>
 <MsgType><![CDATA[text]]></MsgType>
-<Content><![CDATA[' . '欢迎回来 ' . $user_info['nickname'] . ']]></Content>
+<Content><![CDATA['.'欢迎回来'.$user_info['nickname'].']]></Content>
 </xml>';
             echo '欢迎回来';
         }else{
@@ -315,11 +316,11 @@ echo $res;
             ];
             info::insert($info);
             echo '
-<xml><ToUserName><![CDATA[' . $openid . ']]></ToUserName>
+<xml><ToUserName><![CDATA['.$openid.']]></ToUserName>
 <FromUserName><![CDATA['.$wx_id.']]></FromUserName>
-<CreateTime>' . time() . '</CreateTime>
+<CreateTime>'.time().'</CreateTime>
 <MsgType><![CDATA[text]]></MsgType>
-<Content><![CDATA[' . '欢迎关注 ' . $user_info['nickname'] . ']]></Content>
+<Content><![CDATA['.'欢迎关注'.$user_info['nickname'].']]></Content>
 </xml>';
             echo '欢迎关注';
         }
@@ -334,7 +335,7 @@ echo $res;
                 [
                     "type"=>"view",
                     "name"=>"最新福利",
-                    "url"=>"http://1809wanglei.comcto.com/getcode"
+                    "url"=>"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxe750a38a8fe84b93&redirect_uri=http%3A%2F%2F1809wanglei.comcto.com%2Fgeturl&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect"
                 ],
 
             ] ,
