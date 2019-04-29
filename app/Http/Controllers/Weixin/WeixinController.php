@@ -11,6 +11,7 @@ use App\Model\GoodsModel;
 use App\Model\info;
 use Illuminate\Support\Str;
 use App\Model\weixin\tmp_wx_users;
+use GuzzleHttp\Client;
 class WeixinController extends Controller
 {
     public function valid()

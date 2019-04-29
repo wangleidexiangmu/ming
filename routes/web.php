@@ -59,4 +59,4 @@ Route::get('so','Weixin\SOController@so');
 //分享
 Route::get('puball','Weixin\SOController@puball');
 Route::get('/wx/test', 'Weixin\SOController@jstest');      //jssdk测试
-Route::get('card', 'Weixin\WeixinController@jstest');  //微信最新福利菜单
+Route::get('card', 'Weixin\WeixinController@card');  //微信最新福利菜单
