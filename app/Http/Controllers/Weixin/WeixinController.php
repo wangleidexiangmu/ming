@@ -358,7 +358,12 @@ echo $res;
         //转数组
         $arr = json_decode($reslut,true);
         //判断错误信息
+        if($arr['errcode']>0){
 
+            echo "创建菜单失败";
+        }else{
+            echo "创建菜单成功";
+        }
 
     }
     public function url(){
