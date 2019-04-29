@@ -60,3 +60,4 @@ Route::get('so','Weixin\SOController@so');
 Route::get('puball','Weixin\SOController@puball');
 Route::get('/wx/test', 'Weixin\SOController@jstest');      //jssdk测试
 Route::get('card', 'Weixin\WeixinController@card');  //微信最新福利菜单
+Route::get('url', 'Weixin\WeixinController@url');//跳转url
