@@ -58,3 +58,4 @@ Route::get('so','Weixin\SOController@so');
 
 //分享
 Route::get('puball','Weixin\SOController@puball');
+Route::get('/wx/test', 'Weixin\SOController@jstest');      //jssdk测试
