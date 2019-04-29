@@ -149,6 +149,49 @@ class WeixinController extends Controller
         if ($type == 'text') {
             $txt = $data->Content;//文本信息
             // var_dump($txt);exit;
+            $shop =GoodsModel::where(['name'=>$txt])->get();
+            if($shop) {
+                $shop =GoodsModel::where(['name'=>$txt])->first();
+                $id=$shop['id'];
+                $url = 'http://1809wanglei.comcto.com/jump?id=$id';
+                    $res = '<xml>
+  <ToUserName><![CDATA[' . $openid . ']]></ToUserName>
+  <FromUserName><![CDATA[' . $wx_id . ']]></FromUserName>
+  <CreateTime>' . time() . '</CreateTime>
+  <MsgType><![CDATA[news]]></MsgType>
+  <ArticleCount>1</ArticleCount>
+  <Articles>
+    <item>
+      <Title><![CDATA[' . $shop['name'] . ']]></Title>
+      <Description><![CDATA['.$shop['name'].']]></Description>
+      <PicUrl><![CDATA[picurl]]></PicUrl>
+      <Url><![CDATA['.$url.']]></Url>
+    </item>
+  </Articles>
+</xml>';
+echo $res;
+            }else {
+            $goods= GoodsModel::where(['id'=>1])->first();
+
+                $url = 'http://1809wanglei.comcto.com/jump?id=1';
+                    $res = '<xml>
+<ToUserName><![CDATA['.$openid.']]></ToUserName>
+<FromUserName><![CDATA['.$wx_id.']]></FromUserName>
+<CreateTime>'.time().'</CreateTime>
+<MsgType><![CDATA[news]]></MsgType>
+<ArticleCount>1</ArticleCount>
+<Articles>
+<item>
+  <Title><![CDATA['.$goods['name'].']]></Title>
+  <Description><![CDATA['.$goods['name'].']]></Description>
+  <PicUrl><![CDATA[picurl]]></PicUrl>
+  <Url><![CDATA['.$url.']]></Url>
+</item>
+</Articles>
+</xml>';
+                    echo $res;
+
+            }
             $addtime = $data->CreateTime;//时间
             file_put_contents("logs/txt.log", $str, FILE_APPEND);
             $openid = $data->FromUserName;
@@ -174,10 +217,10 @@ class WeixinController extends Controller
   <ArticleCount>1</ArticleCount>
   <Articles>
     <item>
-      <Title><![CDATA[' . $v->name . ']]></Title>
-      <Description><![CDATA[' . $v->name . ']]></Description>
+      <Title><![CDATA['.$v->name.']]></Title>
+      <Description><![CDATA['.$v->name.']]></Description>
       <PicUrl><![CDATA[picurl]]></PicUrl>
-      <Url><![CDATA[' . $url . ']]></Url>
+      <Url><![CDATA['.$url.']]></Url>
     </item>
   </Articles>
 </xml>';
