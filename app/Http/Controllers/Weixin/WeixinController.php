@@ -12,6 +12,7 @@ use App\Model\info;
 use Illuminate\Support\Str;
 use App\Model\weixin\tmp_wx_users;
 use GuzzleHttp\Client;
+use use Illuminate\Support\Facades\Redis;
 class WeixinController extends Controller
 {
     public function valid()
@@ -50,93 +51,94 @@ class WeixinController extends Controller
         $picurl='http://image.baidu.com/search/detail?ct=503316480&z=0&ipn=d&word=%E5%9B%BE%E7%89%87jpg&hs=2&pn=0&spn=0&di=78031135380&pi=0&rn=1&tn=baiduimagedetail&is=0%2C0&ie=utf-8&oe=utf-8&cl=2&lm=-1&cs=2322346566%2C2175418725&os=1836096180%2C2499822995&simid=0%2C0&adpicid=0&lpn=0&ln=30&fr=ala&fm=&sme=&cg=&bdtype=0&oriquery=%E5%9B%BE%E7%89%87jpg&objurl=http%3A%2F%2Fimg.jieju.cn%2Fuserfiles%2Fupload%2Fimage%2F20180820%2F6367035969868343062045193.jpg&fromurl=ippr_z2C%24qAzdH3FAzdH3Fooo_z%26e3B3tj37_z%26e3BvgAzdH3FNjofAzdH3Fda8babdaAzdH3FDjpwtsbacl9c_z%26e3Bfip4s&gsm=0&islist=&querylist=';
         $url='http://1809wanglei.comcto.com/puball';
 
-        if ($event == 'SCAN') {        //扫码关注事
-            $local_user = tmp_wx_users::where(['openid' => $openid])->first();
-            if ($local_user) {
-                $t = "商品";
-                $m = "商品详情";
-                echo '
-<xml>
-<ToUserName><![CDATA[' . $openid . ']]></ToUserName>
-<FromUserName><![CDATA[' . $wx_id . ']]></FromUserName>
-<CreateTime>' . time() . '</CreateTime>
-<MsgType><![CDATA[news]]></MsgType>
-<ArticleCount>1</ArticleCount>
-<Articles>
-<item>
-<Title><![CDATA[' . $t . ']]></Title>
-<Description><![CDATA[' . $m . ']]></Description>
-<PicUrl><![CDATA[' . $picurl . ']]></PicUrl>
-<Url><![CDATA[' . $url . ']]></Url>
-</item>
-</Articles>
-</xml>';
-            } else {
-                $t = "商品";
-                $m = "商品详情";
-                //获取用户信息
-                $u = $this->getUserInfo($openid);
-                //用户信息入库
-                $u_info = [
-                    'openid' => $u['openid'],
-                    'nickname' => $u['nickname'],
-                    'sex' => $u['sex'],
-                    'headimgurl' => $u['headimgurl'],
-                    'eventkey' => substr($eventkey, 8),
-                ];
-                $id = tmp_wx_users::insertGetId($u_info);
-                echo '
-<xml>
-<ToUserName><![CDATA[' . $openid . ']]></ToUserName>
-<FromUserName><![CDATA[' . $wx_id . ']]></FromUserName>
-<CreateTime>' . time() . '</CreateTime>
-<MsgType><![CDATA[news]]></MsgType>
-<ArticleCount>1</ArticleCount>
-<Articles>
-<item>
-<Title><![CDATA[' . $t . ']]></Title>
-<Description><![CDATA[' . $m . ']]></Description>
-<PicUrl><![CDATA[' . $picurl . ']]></PicUrl>
-<Url><![CDATA[' . $url . ']]></Url>
-</item>
-</Articles>
-</xml>';
-            }
-        }//else if ($eventkey == ''&& $event == 'subscribe') {
-//               //根据openid判断用户是否已存在
-//               $local_user = weixin::where(['openid' => $openid])->first();
-//              if ($local_user) {
-//                  //用户之前关注过
-//                   echo '
-//                   <xml>
-//                   <ToUserName><![CDATA['.$openid.']]></ToUserName>
-//                  <FromUserName><![CDATA['.$wx_id.']]></FromUserName>
-//                   <CreateTime>'.time().'</CreateTime>
-//                  <MsgType><![CDATA[text]]></MsgType>
-//                  <Content><![CDATA['.'欢迎回来 '.$local_user['nickname'].']]></Content>
-//                   </xml>';
-//
-//               } else {
-//                   //获取用户信息
-//                   $u = $this->getUserInfo($openid);
-//                   //用户信息入库
-//                   $u_info = [
-//                        'openid' => $u['openid'],
-//                      'nickname' => $u['nickname'],
-//                       'sex' => $u['sex'],
-//                        'headimgurl' => $u['headimgurl'],
-//                    ];
-//                  $id = weixin::insertGetId($u_info);
-//                   echo '
-//                   <xml>
-//                   <ToUserName><![CDATA['.$openid.']]></ToUserName>
-//                   <FromUserName><![CDATA['.$wx_id.']]></FromUserName>
-//                   <CreateTime>'.time().'</CreateTime>
-//                    <MsgType><![CDATA[text]]></MsgType>
-//                   <Content><![CDATA['.'欢迎关注'.$u['nickname'].']]></Content>
-//                   </xml>';
-//               }
+//        if ($event == 'SCAN') {        //扫码关注事
+//            $local_user = tmp_wx_users::where(['openid' => $openid])->first();
+//            if ($local_user) {
+//                $t = "商品";
+//                $m = "商品详情";
+//                echo '
+//<xml>
+//<ToUserName><![CDATA[' . $openid . ']]></ToUserName>
+//<FromUserName><![CDATA[' . $wx_id . ']]></FromUserName>
+//<CreateTime>' . time() . '</CreateTime>
+//<MsgType><![CDATA[news]]></MsgType>
+//<ArticleCount>1</ArticleCount>
+//<Articles>
+//<item>
+//<Title><![CDATA[' . $t . ']]></Title>
+//<Description><![CDATA[' . $m . ']]></Description>
+//<PicUrl><![CDATA[' . $picurl . ']]></PicUrl>
+//<Url><![CDATA[' . $url . ']]></Url>
+//</item>
+//</Articles>
+//</xml>';
+//            } else {
+//                $t = "商品";
+//                $m = "商品详情";
+//                //获取用户信息
+//                $u = $this->getUserInfo($openid);
+//                //用户信息入库
+//                $u_info = [
+//                    'openid' => $u['openid'],
+//                    'nickname' => $u['nickname'],
+//                    'sex' => $u['sex'],
+//                    'headimgurl' => $u['headimgurl'],
+//                    'eventkey' => substr($eventkey, 8),
+//                ];
+//                $id = tmp_wx_users::insertGetId($u_info);
+//                echo '
+//<xml>
+//<ToUserName><![CDATA[' . $openid . ']]></ToUserName>
+//<FromUserName><![CDATA[' . $wx_id . ']]></FromUserName>
+//<CreateTime>' . time() . '</CreateTime>
+//<MsgType><![CDATA[news]]></MsgType>
+//<ArticleCount>1</ArticleCount>
+//<Articles>
+//<item>
+//<Title><![CDATA[' . $t . ']]></Title>
+//<Description><![CDATA[' . $m . ']]></Description>
+//<PicUrl><![CDATA[' . $picurl . ']]></PicUrl>
+//<Url><![CDATA[' . $url . ']]></Url>
+//</item>
+//</Articles>
+//</xml>';
 //            }
+//        }//
+ if ($event == 'subscribe') {
+               //根据openid判断用户是否已存在
+               $local_user = weixin::where(['openid' => $openid])->first();
+              if ($local_user) {
+                  //用户之前关注过
+                   echo '
+                   <xml>
+                   <ToUserName><![CDATA['.$openid.']]></ToUserName>
+                  <FromUserName><![CDATA['.$wx_id.']]></FromUserName>
+                   <CreateTime>'.time().'</CreateTime>
+                  <MsgType><![CDATA[text]]></MsgType>
+                  <Content><![CDATA['.'欢迎回来 '.$local_user['nickname'].']]></Content>
+                   </xml>';
+
+               } else {
+                   //获取用户信息
+                   $u = $this->getUserInfo($openid);
+                   //用户信息入库
+                   $u_info = [
+                        'openid' => $u['openid'],
+                      'nickname' => $u['nickname'],
+                       'sex' => $u['sex'],
+                        'headimgurl' => $u['headimgurl'],
+                    ];
+                  $id = weixin::insertGetId($u_info);
+                   echo '
+                   <xml>
+                   <ToUserName><![CDATA['.$openid.']]></ToUserName>
+                   <FromUserName><![CDATA['.$wx_id.']]></FromUserName>
+                   <CreateTime>'.time().'</CreateTime>
+                    <MsgType><![CDATA[text]]></MsgType>
+                   <Content><![CDATA['.'请输入商品名字'.$u['nickname'].']]></Content>
+                   </xml>';
+               }
+            }
 
 
 
@@ -148,9 +150,14 @@ class WeixinController extends Controller
 
 
         if ($type == 'text') {
+
             $txt = $data->Content;//文本信息
             // var_dump($txt);exit;
+            $key=$txt;
+
             $shop =GoodsModel::where(['name'=>$txt])->get();
+            Redis::set($key,$shop['name']);
+            Redis::expire($key,3600);
             if($shop) {
                 $shop =GoodsModel::where(['name'=>$txt])->first();
                 $id=$shop['id'];
