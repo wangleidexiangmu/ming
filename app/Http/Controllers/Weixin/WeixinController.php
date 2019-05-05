@@ -99,22 +99,24 @@ class WeixinController extends Controller
             // var_dump($txt);exit;
             $key=$txt;
 
-            $shop =GoodsModel::where(['name'=>$txt])->get();
-            Redis::set($key,$shop['name']);
-            Redis::expire($key,3600);
+            $shop =GoodsModel::where(['name'=>$key])->get();
+            $name = Redis::get($key);
+            if($name){
+                Redis::set($key);
+            }
             if($shop) {
                 $shop =GoodsModel::where(['name'=>$txt])->first();
                 $id=$shop['id'];
                 $url = 'http://1809wanglei.comcto.com/jump?id=$id';
                     $res = '<xml>
-  <ToUserName><![CDATA[' . $openid . ']]></ToUserName>
-  <FromUserName><![CDATA[' . $wx_id . ']]></FromUserName>
-  <CreateTime>' . time() . '</CreateTime>
+  <ToUserName><![CDATA['.$openid.']]></ToUserName>
+  <FromUserName><![CDATA['.$wx_id.']]></FromUserName>
+  <CreateTime>'.time().'</CreateTime>
   <MsgType><![CDATA[news]]></MsgType>
   <ArticleCount>1</ArticleCount>
   <Articles>
     <item>
-      <Title><![CDATA[' . $shop['name'] . ']]></Title>
+      <Title><![CDATA['.$shop['name'].']]></Title>
       <Description><![CDATA['.$shop['name'].']]></Description>
       <PicUrl><![CDATA[picurl]]></PicUrl>
       <Url><![CDATA['.$url.']]></Url>
